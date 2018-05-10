@@ -32,5 +32,28 @@ class Validator
 
         return true;
     }
+
+    public static function arePasswordsEqual($password, $repeated_password)
+    {
+        if($password == $repeated_password)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isValidEmail($email)
+    {
+        $pattern = "/^(.*)+@(.*)+.(.*)+$/";
+
+        if(preg_match($pattern, $email))
+        {
+            echo "5";
+            return true;
+        }  
+
+        return false;
+    }
 }
 ?> 

@@ -9,49 +9,48 @@
 </head>
 
 <body>
-
     <form method="post" action="../controllers/AddProject.php">
         <fieldset>
             <legend>
                 <h3>Create Project</h3>
             </legend>
             <div class="container">
-                <label for="course-title"> Project name </label>
-                <input id="course-title" name="title" type="text" required>
+                <label for="project-title"> Project name </label>
+                <input id="project-title" name="title" type="text" required>
                 <div class="error">
                     <?php if(isset($_GET['title']) && $_GET['title']):?>
-                        Името на дисциплината е задължително.
+                        Project title is required.
                     <?php endif?>
                 </div>
             </div>
             <div class="container">
-                <label for="course-lecturer"> Start date </label>
-                <input id="course-lecturer" name="start_date" type="date" required>
+                <label for="project-start-date"> Start date </label>
+                <input id="project-start-date" name="start_date" type="date" required>
                 <div class="error">
-                    <?php if(isset($_GET['lecturer']) && $_GET['lecturer']):?>
-                        Името на лектора е задължително.
+                    <?php if(isset($_GET['start_date']) && $_GET['start_date']):?>
+                        Start date is required and could not be in the past.
                     <?php endif?>
                 </div>
             </div>
             <div class="container">
-                <label for="course-end-date"> End date </label>
-                <input id="course-end-date" name="end_date" type="date" required>
+                <label for="project-end-date"> End date </label>
+                <input id="project-end-date" name="end_date" type="date" required>
                 <div class="error">
-                    <?php if(isset($_GET['lecturer']) && $_GET['lecturer']):?>
-                        Името на лектора е задължително.
+                    <?php if(isset($_GET['end_date']) && $_GET['end_date']):?>
+                        End date is required and could not be before start date.
                     <?php endif?>
                 </div>
             </div>
             <div class="container">
-                <label for="course-description"> Project overview </label>
-                <textarea id="course-description" name="overview" required></textarea>
-                <?php if(isset($_GET['description']) && $_GET['description']):?>
-                    Описанието на дисциплината е задължително.
+                <label for="project-overview"> Project overview </label>
+                <textarea id="project-overview" name="overview" required></textarea>
+                <?php if(isset($_GET['overview']) && $_GET['overview']):?>
+                    Overview is required.
                 <?php endif?>
             </div>
             <div>
-                <input type="reset" value="Изчисти" />
-                <input type="submit" value="Добави" />
+                <input type="reset" value="Reset" />
+                <input type="submit" value="Create" />
             </div>
         </fieldset>
     </form>

@@ -1,0 +1,89 @@
+<?php
+namespace models;
+use libs\Db;
+class User
+{
+    private $id;
+    private $username;
+    private $password;
+    private $email;
+    private $full_name;
+    
+    public function __construct() {
+
+    }
+
+    public static function create($username, $password, $email, $full_name)
+    {
+        $instance = new self();
+        $instance->setUsername($username);
+        $instance->setPassword($password);
+		$instance->setEmail($email);
+        $instance->setFullName($full_name);      
+        
+        return $instance;
+    }
+
+    public function setId($id)
+    {    
+        $this->id = $id;
+    }
+
+    public function getId()
+    {    
+        return $this->id;
+    }
+
+    public function setUsername($username)
+    {    
+        $this->username = $username;
+    }
+
+    public function getUsername()
+    {    
+        return $this->username;
+    }
+
+    public function setPassword($password)
+    {    
+        $this->password = $password;
+    }
+
+    public function getPassword()
+    {    
+        return $this->password;
+    }
+
+    public function setEmail($email)
+    {    
+        $this->email = $email;
+    }
+
+    public function getEmail()
+    {    
+        return $this->email;
+    }
+
+    public function setFullName($full_name)
+    {    
+		$this->full_name = $full_name;
+    }
+
+    public function getFullName()
+    {    
+		return $this->full_name;
+    }
+
+    public function insert()
+    {
+        $query = (new Db())->getConn()->prepare("INSERT INTO `users` (username, password, email, full_name) VALUES (?, ?, ?, ?) ");
+        return $query->execute([$this->username, $this->password, $this->email, $this->full_name]);
+    }
+
+    public function getUser($username, $password)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT * FROM `users` WHERE `username` == '$username' AND `password`== '$password'");
+        return $query->execute();
+    }
+  }
+?>

@@ -14,6 +14,7 @@ CREATE TABLE projects (
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50),
   full_name VARCHAR(128),
   email VARCHAR(50),
   password VARCHAR(128),
