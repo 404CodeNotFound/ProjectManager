@@ -82,8 +82,18 @@ class User
 
     public function getUser($username, $password)
     {
-        $query = (new Db())->getConn()->prepare("SELECT * FROM `users` WHERE `username` == '$username' AND `password`== '$password'");
-        return $query->execute();
+        $query = (new Db())->getConn()->prepare("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $query->execute();
+        
+        $user = new User();
+        
+        while ($foundUser = $query->fetch())
+        {
+            $user->setUsername($foundUser['username']);
+            $user->setId($foundUser['id']);
+        }
+        
+        return $user;
     }
   }
 ?>
