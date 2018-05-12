@@ -3,6 +3,7 @@ require_once "../libs/Startup.php";
 Startup::_init(true);
 use helpers\Validator;
 use models\Project;
+use models\ProjectParticipant;
 
 session_start();
 if(!isset($_SESSION['current_user_id']))
@@ -12,30 +13,45 @@ if(!isset($_SESSION['current_user_id']))
 }
 else
 {
-	$currentUser = $_SESSION['current_user_id'];
+	$current_user = $_SESSION['current_user_id'];
+	$json = file_get_contents('php://input');
+    $data = json_decode($json, true);
 
-	$title = $_POST['title'];
-	$start_date = $_POST['start_date'];
-	$end_date = $_POST['end_date'];
-	$overview = $_POST['overview'];
+	$title = $data['title'];
+	$start_date = $data['start_date'];
+	$end_date = $data['end_date'];
+	$overview = $data['overview'];
+	$participants = [$current_user];
 
-
-	$is_title_valid = Validator::exists($title);
-	$is_start_date_valid = Validator::exists($start_date) && Validator::isValidStartDate($start_date);
-	$is_end_date_valid = Validator::exists($end_date) && Validator::isValidEndDate($end_date, $start_date);
-	$is_overview_valid = Validator::exists($overview);
-
-	if (!$is_title_valid || !$is_start_date_valid || !$is_end_date_valid || !$is_overview_valid) {
-	    header('Location: ../views/AddProjectView.php?title=' . json_encode($is_title_valid) . '&start_date=' . json_encode($is_start_date_valid) . '&end_date=' . json_encode($is_end_date_valid));
-	} else {
-	    $project = Project::create($title, $start_date, $end_date, $overview, $currentUser);
-	    $isSuccessful = $project->insert();
-
-	    if ($isSuccessful) {
-	        header('Location: ../views/ProjectDetailsView.php');
-	    } else {
-	        echo "<p> Error! The subject was not inserted! </p>";
-	    }
+	foreach ($data['participants'] as $participant) {
+		foreach ($participant as $key => $value) {
+			if($key === 'id') 
+			{
+				$participants[] = $value;
+			}
+		}
 	}
+
+    $project = Project::create($title, $start_date, $end_date, $overview, $current_user);
+    $isSuccessful = $project->insert();
+
+    if ($isSuccessful) {
+    	$project_id = Project::getProjectIdByTitle($title);
+
+    	foreach ($participants as $participant_id) {
+    		$link = ProjectParticipant::create($project_id, $participant_id);
+    		$isSuccessful = $link->insert();
+
+    		if(!$isSuccessful)
+    		{
+    			echo "<p> Error! The project was not inserted! </p>";
+    			break;
+    		}
+    	}
+
+    	echo $isSuccessful;
+    } else {
+        echo "<p> Error! The project was not inserted! </p>";
+    }
 }
 ?> 

@@ -1,7 +1,7 @@
 <?php
 namespace models;
 use libs\Db;
-class User
+class User implements \JsonSerializable
 {
     private $id;
     private $username;
@@ -94,6 +94,27 @@ class User
         }
         
         return $user;
+    }
+
+    public function getUsersByUsernamePattern($username_pattern) {
+        $query = (new Db())->getConn()->prepare("SELECT * FROM users WHERE username LIKE '$username_pattern%'");
+        $query->execute();
+        
+        $found_users = array();
+
+        while ($found_user = $query->fetch())
+        {
+            $user = new User();
+            $user->setUsername($found_user['username']);
+            $user->setId($found_user['id']);
+            array_push($found_users, $user);
+        }
+
+        return $found_users;
+    }
+
+    public function jsonSerialize() {
+        return (object) get_object_vars($this);
     }
   }
 ?>

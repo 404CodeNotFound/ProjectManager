@@ -105,5 +105,16 @@ class Project
         $query = (new Db())->getConn()->prepare("INSERT INTO `projects` (title, start_date, end_date, overview, owner_id, is_active) VALUES (?, ?, ?, ?, ?, ?) ");
         return $query->execute([$this->title, $this->start_date, $this->end_date, $this->overview, $this->owner_id, $this->is_active]);
     }
+
+    public static function getProjectIdByTitle($title)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT * FROM projects WHERE title = '$title'");
+        $query->execute();
+
+        while ($found_project = $query->fetch())
+        {
+            return $found_project['id'];
+        }
+    }
   }
 ?>

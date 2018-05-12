@@ -16,7 +16,6 @@
 
                                 <section id="banner">
                                     <div class="content">
-                                        <form method="post" action="../controllers/AddProject.php">
                                             <div class="row uniform">
                                                 <div class="12u 12u$(xsmall)">
                                                     <input type="text" name="title" id="title" placeholder="Title" required />
@@ -52,18 +51,22 @@
                                                         <?php endif?>
                                                     </div>
                                                 </div>
-                                                <div class="12u 12u$(xsmall)">
-                                                    <input type="text" name="participants" id="participants" placeholder="Enter participants..." />
+                                                <div class="12u 12u$(xsmall)" id="selected-users">
+
                                                 </div>
-                                                <!-- Break -->
+                                                <div class="12u 12u$(xsmall)">
+                                                    <input type="text" name="participant" id="participant" placeholder="Enter participant username..." />
+                                                    <input type="button" name="search_user" id="search-user" value="Search">
+                                                    <div id="user-results"></div>
+                                                </div>
+
                                                 <div class="12u$">
                                                     <ul class="actions">
-                                                        <li><input type="submit" value="Create" class="special" /></li>
+                                                        <li><input type="submit" value="Create" class="special" id="create-project"/></li>
                                                         <li><input type="reset" value="Reset" /></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                     <span class="image object">
                                         <img src="images/pic10.jpg" alt="" />
@@ -109,37 +112,91 @@
             <script src="../assets/js/util.js"></script>
             <script src="../assets/js/main.js"></script>
             <script>
-                let autocompleteDiv = document.createElement('div');
-                autocompleteDiv.setAttribute("id", "autocomplete-list");
+                let selectedUsers = [];
+                const searchUserBtn = document.getElementById('search-user');
 
-                const users = [ {id: 1, username: "yoana"}, {id: 2, username: "yo"}];
-                const participantsInput = document.getElementById('participants');
+                searchUserBtn.onclick = function(event) {
+                    const searchUserInput = document.getElementById('participant');
+                    let resultsDiv = document.getElementById('user-results');
+                    resultsDiv.innerText = '';
+                    let request = new XMLHttpRequest();
+                    request.open("GET", `../controllers/GetUsers.php?username=${searchUserInput.value}`);
 
-                participantsInput.addEventListener("keydown", function (event) {
-                    clearSuggestions();
-                    const inputValue = event.target.value;                        
-                        this.parentNode.appendChild(autocompleteDiv);
-                        const pattern = inputValue.trim();
-                        if(pattern) {
-                            const matches = users.filter(user => contains(pattern, user.username))
-                            .map(user => user.username);
+                    request.onload = function(e) {
+                        let response = request.response;
+                        let users = JSON.parse(response);
 
-                            for(let i = 0; i < matches.length; i++) {
-                                let row = document.createElement('p');
-                                row.innerText = matches[i];
-                                autocompleteDiv.appendChild(row);
-                            }
+                        for(let i = 0; i < users.length; i++) {
+                            addSearchResultToDom(users[i], resultsDiv);
                         }
-                    
-                });
+                    }
 
-                function clearSuggestions() {
-                    console.log('here');
-                    autocompleteDiv.innerText = '';
+                    request.send();
                 }
 
-                function contains(pattern, str) {
-                    return str.substr(0, pattern.length) === pattern;
+                
+                function addSearchResultToDom(user, contextNode) {
+                    let input = document.createElement('input');
+                    input.value = user.username;
+                    input.id = user.id;
+                    input.type = 'checkbox';
+                    const index = selectedUsers.findIndex(u => u.username === user.username);
+                    if(index >= 0) {
+                        input.checked = true;
+                    }
+
+                    input.addEventListener('change', function() {
+                        if(this.checked) {
+                            console.log('check')
+                            selectedUsers.push({username: this.value, id: this.id });
+                        } else {
+                            const userIndex = selectedUsers.find(u => u.username === user.username);
+                            selectedUsers.splice(index, 1);
+                        }
+                    });
+
+                    let label = document.createElement('label');
+                    label.htmlFor = user.id;
+                    label.innerText = user.username;
+
+                    let div = document.createElement('div');
+
+                    div.appendChild(input);
+                    div.appendChild(label);
+
+                    contextNode.appendChild(div);
+                }
+
+                const submitBtn = document.getElementById('create-project');
+                submitBtn.onclick = function(event) {
+                    const project = getAllDataFromForm();
+
+                    sendForm(JSON.stringify(project));
+                }
+
+                function getAllDataFromForm() {
+                    let project = {
+                        participants: selectedUsers,
+                        title: document.getElementById('title').value,
+                        start_date: document.getElementById('start-date').value,
+                        end_date: document.getElementById('end-date').value,
+                        overview: document.getElementById('overview').value
+                    };
+
+                    return project;
+                }
+
+                function sendForm(project) {
+                    let request = new XMLHttpRequest();
+                    request.open("POST", `../controllers/AddProject.php`, true);
+                    request.setRequestHeader('Content-type', 'application/json');
+
+                    request.onload = function(e) {
+                        let response = request.response;
+                        console.log(response);
+                    }
+
+                    request.send(project);
                 }
             </script> 
     </body>
