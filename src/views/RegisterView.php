@@ -1,64 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ProjectManager - Register</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+                        <header id="header">
+                            <h1 class="logo" id="register-title">Register</h1>
+                        </header>
+                        <section id="register-banner" class="banner">
+                            <form method="post" action="../controllers/Register.php">
+                                <div class="row uniform" id="register-inputs">
+                                    <div class="8u 12u$(xsmall)">
+                                        <input type="text" name="username" id="username" placeholder="Username" required />
+                                        <div class="error">
+                                            <?php if(isset($_GET['username']) && $_GET['username']):?>
+                                                Username is required.
+                                            <?php endif?>
+                                        </div>
+                                    </div>
+                                    <div class="8u 12u$(xsmall)">
+                                        <input type="text" name="password" id="password" placeholder="Password" />
+                                        <div class="error">
+                                            <?php if(isset($_GET['password']) && $_GET['password']):?>
+                                                Password is required.
+                                            <?php endif?>
+                                        </div>
+                                    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ProjectManager - Register</title>
-</head>
+                                    <div class="8u 12u$(xsmall)">
+                                        <input type="text" name="repeated_password" id="repeated-password" placeholder="Repeat Password" />
+                                        <div class="error">
+                                            <?php if(isset($_GET['repeated_password']) && $_GET['repeated_password']):?>
+                                                Passwords does not match.
+                                            <?php endif?>
+                                        </div>
+                                    </div>
 
-<body>
-    <form method="post" action="../controllers/Register.php">
-        <fieldset>
-            <legend>
-                <h3>Register</h3>
-            </legend>
-            <div class="container">
-                <label for="username"> Username </label>
-                <input id="username" name="username" type="text" required />
-                <div class="error">
-                    <?php if(isset($_GET['username']) && $_GET['username']):?>
-                        Username is required.
-                    <?php endif?>
+                                    <div class="8u 12u$(xsmall)">
+                                        <input type="email" name="email" id="email" placeholder="Email" />
+                                        <div class="error">
+                                            <?php if(isset($_GET['email']) && $_GET['email']):?>
+                                                Email is required and should be valid.
+                                            <?php endif?>
+                                        </div>
+                                    </div>
+
+                                    <div class="8u 12u$(xsmall)">
+                                        <input type="text" name="full_name" id="full-name" placeholder="Full Name" />
+                                        <div class="error">
+                                            <?php if(isset($_GET['full_name']) && $_GET['full_name']):?>
+                                                Full name is required.
+                                            <?php endif?>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="8u 12u$">
+                                        <ul id="login-actions" class="actions">
+                                            <li><input type="submit" value="Register" class="special" /></li>
+                                            <li><input type="reset" value="Reset" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
                 </div>
             </div>
-            <div class="container">
-                <label for="password"> Password </label>
-                <input id="password" name="password" type="password" required />
-                <div class="error">
-                    <?php if(isset($_GET['password']) && $_GET['password']):?>
-                        Password is required.
-                    <?php endif?>
+
+            <div id="sidebar">
+                <div class="inner">
+                        <section id="search" class="alt">
+                            <h2>Project Manager</h2>
+                        </section>
+
+                        <nav id="menu">
+                            <header class="major">
+                                <h2>Menu</h2>
+                            </header>
+                            <ul>
+                                <li><a href="./HomepageView.php">Homepage</a></li>
+                                <li><a href="./LoginView.php">Login</a></li>
+                                <li><a href="./RegisterView.php">Register</a></li>
+                            </ul>
+                        </nav>
+
+                        <footer id="footer">
+                            <p class="copyright">&copy; Project Manager. All rights reserved.</p>
+                        </footer>
+
                 </div>
             </div>
-            <div class="container">
-                <label for="repeated-password"> Repeat Password </label>
-                <input id="repeated-password" name="repeated_password" type="password" required />
-                <div class="error">
-                    <?php if(isset($_GET['repeated_password']) && $_GET['repeated_password']):?>
-                        Passwords does not match.
-                    <?php endif?>
-                </div>
-            </div>
-            <div class="container">
-                <label for="email"> Email </label>
-                <input id="email" name="email" type="email" required />
-                <?php if(isset($_GET['email']) && $_GET['email']):?>
-                    Email is required and should be valid.
-                <?php endif?>
-            </div>
-            <div class="container">
-                <label for="full-name"> Full Name </label>
-                <input id="full-name" name="full_name" type="text" required />
-                <?php if(isset($_GET['full_name']) && $_GET['full_name']):?>
-                    Full name is required.
-                <?php endif?>
-            </div>
-            <div>
-                <input type="submit" value="Register" />
-            </div>
-        </fieldset>
-    </form>
-</body>
+        </div>
+
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/skel.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/main.js"></script>
+
+    </body>
 </html>
