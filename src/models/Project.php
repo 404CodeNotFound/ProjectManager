@@ -154,5 +154,22 @@ class Project
         $query = (new Db())->getConn()->prepare("UPDATE projects SET title=?, start_date=?, end_date=?, overview=? WHERE id=?");
         return $query->execute([$title, $start_date, $end_date, $overview, $id]);
     }
+
+    public static function getAll()
+    {
+        $query = (new Db())->getConn()->prepare("SELECT * FROM projects ORDER BY title");
+        $query->execute();
+
+        $projects = [];
+        while ($found_project = $query->fetch())
+        {
+            $project = new Project();
+            $project->setTitle($found_project['title']); 
+            $project->setId($found_project['id']);
+            $projects[] = $project;
+        }
+
+        return $projects;
+    }
   }
 ?>

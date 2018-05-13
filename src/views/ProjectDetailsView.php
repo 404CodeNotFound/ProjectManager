@@ -60,7 +60,7 @@
                             <ul>
                                 <li><a href="./HomepageView.php">Homepage</a></li>
                                 <li><a href="generic.html">Dashboard</a></li>
-                                <li><a href="./ProjectsList.php">Projects</a></li>
+                                <li><a href="./GetAllProjects.php">Projects</a></li>
                                 <li>
                                     <span class="opener">Sprints</span>
                                     <ul>
@@ -73,7 +73,6 @@
                         <footer id="footer">
                             <p class="copyright">&copy; Project Manager. All rights reserved.</p>
                         </footer>
-
                 </div>
             </div>
 
