@@ -8,102 +8,98 @@
     </head>
     <body>
             <div id="wrapper">
-                    <div id="main">
-                        <div class="inner">
-                                <header id="header">
-                                    <h1 class="logo">Create Project</h1>
-                                </header>
+                <div id="main">
+                    <div class="inner">
+                            <header id="header">
+                                <h1 class="logo">Create Project</h1>
+                            </header>
 
-                                <section id="banner">
-                                    <div class="content">
-                                            <div class="row uniform">
-                                                <div class="12u 12u$(xsmall)">
-                                                    <input type="text" name="title" id="title" placeholder="Title" required />
-                                                    <div class="error">
-                                                        <?php if(isset($_GET['title']) && $_GET['title']):?>
-                                                            Project title is required.
-                                                        <?php endif?>
-                                                    </div>
-                                                </div>
-                                                <div class="6u 12u$(xsmall)">
-                                                    <label for="start-date" class="calendar-label">From</label>
-                                                    <input type="date" name="start_date" id="start-date" required />
-                                                    <div class="error">
-                                                        <?php if(isset($_GET['start_date']) && $_GET['start_date']):?>
-                                                            Start date is required and could not be in the past.
-                                                        <?php endif?>
-                                                    </div>
-                                                </div>
-                                                <div class="6u 12u$(xsmall)">
-                                                    <label for="end-date" class="calendar-label">To</label>
-                                                    <input type="date" name="end_date" id="end-date" required />
-                                                    <div class="error">
-                                                        <?php if(isset($_GET['end_date']) && $_GET['end_date']):?>
-                                                            End date is required and could not be before start date.
-                                                        <?php endif?>
-                                                    </div>
-                                                </div>
-                                                <div class="12u$">
-                                                    <textarea name="overview" id="overview" placeholder="Enter project overview..." rows="6"></textarea>
-                                                    <div class="error">
-                                                        <?php if(isset($_GET['overview']) && $_GET['overview']):?>
-                                                            Overview is required.
-                                                        <?php endif?>
-                                                    </div>
-                                                </div>
-                                                <div class="12u 12u$(xsmall)" id="selected-users">
-
-                                                </div>
-                                                <div class="12u 12u$(xsmall)">
-                                                    <input type="text" name="participant" id="participant" placeholder="Enter participant username..." />
-                                                    <input type="button" name="search_user" id="search-user" value="Search">
-                                                    <div id="user-results"></div>
-                                                </div>
-
-                                                <div class="12u$">
-                                                    <ul class="actions">
-                                                        <li><input type="submit" value="Create" class="special" id="create-project"/></li>
-                                                        <li><input type="reset" value="Reset" /></li>
-                                                    </ul>
+                            <section id="banner">
+                                <div class="content">
+                                        <div class="row uniform">
+                                            <div class="12u 12u$(xsmall)">
+                                                <input type="text" name="title" id="title" placeholder="Title" required />
+                                                <div class="error">
+                                                    <?php if(isset($_GET['title']) && $_GET['title']):?>
+                                                        Project title is required.
+                                                    <?php endif?>
                                                 </div>
                                             </div>
-                                    </div>
-                                    <span class="image object">
-                                        <img src="images/pic10.jpg" alt="" />
-                                    </span>
-                                </section>
-                        </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="start-date" class="calendar-label">From</label>
+                                                <input type="date" name="start_date" id="start-date" required />
+                                                <div class="error">
+                                                    <?php if(isset($_GET['start_date']) && $_GET['start_date']):?>
+                                                        Start date is required and could not be in the past.
+                                                    <?php endif?>
+                                                </div>
+                                            </div>
+                                            <div class="6u 12u$(xsmall)">
+                                                <label for="end-date" class="calendar-label">To</label>
+                                                <input type="date" name="end_date" id="end-date" required />
+                                                <div class="error">
+                                                    <?php if(isset($_GET['end_date']) && $_GET['end_date']):?>
+                                                        End date is required and could not be before start date.
+                                                    <?php endif?>
+                                                </div>
+                                            </div>
+                                            <div class="12u$">
+                                                <textarea name="overview" id="overview" placeholder="Enter project overview..." rows="6"></textarea>
+                                                <div class="error">
+                                                    <?php if(isset($_GET['overview']) && $_GET['overview']):?>
+                                                        Overview is required.
+                                                    <?php endif?>
+                                                </div>
+                                            </div>
+                                            <div class="12u 12u$(xsmall)" id="selected-users">
+
+                                            </div>
+                                            <div class="12u 12u$(xsmall)">
+                                                <input type="text" name="participant" id="participant" placeholder="Enter participant username..." />
+                                                <input type="button" name="search_user" id="search-user" value="Search">
+                                                <div id="user-results"></div>
+                                            </div>
+
+                                            <div class="12u$">
+                                                <ul class="actions">
+                                                    <li><input type="submit" value="Create" class="special" id="create-project"/></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                </div>
+                            </section>
                     </div>
+                </div>
 
-                    <div id="sidebar">
-                        <div class="inner">
-                                <section id="search" class="alt">
-                                    <h2>Project Manager</h2>
-                                </section>
+                <div id="sidebar">
+                    <div class="inner">
+                        <section id="search" class="alt">
+                            <h2>Project Manager</h2>
+                        </section>
 
-                                <nav id="menu">
-                                    <header class="major">
-                                        <h2>Menu</h2>
-                                    </header>
+                        <nav id="menu">
+                            <header class="major">
+                                <h2>Menu</h2>
+                            </header>
+                            <ul>
+                                <li><a href="./HomepageView.php">Homepage</a></li>
+                                <li><a href="generic.html">Dashboard</a></li>
+                                <li><a href="./ProjectsList.php">Projects</a></li>
+                                <li>
+                                    <span class="opener">Sprints</span>
                                     <ul>
-                                        <li><a href="./HomepageView.php">Homepage</a></li>
-                                        <li><a href="generic.html">Dashboard</a></li>
-                                        <li><a href="./ProjectsList.php">Projects</a></li>
-                                        <li>
-                                            <span class="opener">Sprints</span>
-                                            <ul>
-                                                <li><a href="#">Active Sprint</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="#">Active Sprint</a></li>
                                     </ul>
-                                </nav>
+                                </li>
+                            </ul>
+                        </nav>
 
-                                <footer id="footer">
-                                    <p class="copyright">&copy; Project Manager. All rights reserved.</p>
-                                </footer>
+                        <footer id="footer">
+                            <p class="copyright">&copy; Project Manager. All rights reserved.</p>
+                        </footer>
 
-                        </div>
                     </div>
+                </div>
 
             </div>
 
@@ -147,7 +143,6 @@
 
                     input.addEventListener('change', function() {
                         if(this.checked) {
-                            console.log('check')
                             selectedUsers.push({username: this.value, id: this.id });
                         } else {
                             const userIndex = selectedUsers.find(u => u.username === user.username);
@@ -193,7 +188,6 @@
 
                     request.onload = function(e) {
                         let response = request.response;
-                        console.log(response);
                     }
 
                     request.send(project);

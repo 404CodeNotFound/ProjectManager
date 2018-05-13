@@ -9,6 +9,7 @@ class Project
     private $end_date;
     private $overview;
     private $owner_id;
+    private $owner_name;
     private $participants;
     private $is_active;    
     
@@ -89,10 +90,20 @@ class Project
 		return $this->owner_id;
     }
 
+    public function setOwnerName($owner_name)
+    {    
+		$this->owner_name = $owner_name;
+    }
+
+    public function getOwnerName()
+    {    
+		return $this->owner_name;
+    }
+
     public function setIsActive()
     {    
         $current_date = date("Y/m/d");
-		$this->is_active =  $current_date <= $this->end_date && $this->start_date <= $current_date ? true : false;
+		$this->is_active = $this->start_date <= $current_date || $current_date <= $this->end_date;
     }
 
     public function getIsActive()
@@ -115,6 +126,33 @@ class Project
         {
             return $found_project['id'];
         }
+    }
+
+    public static function getProjectById($id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT p.title, p.start_date, p.end_date, p.overview, u.full_name FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.id = '$id'");
+        $query->execute();
+
+        $project = new Project();
+        while ($found_project = $query->fetch())
+        {
+            $project->setTitle($found_project['title']);
+            $start = date_create($found_project['start_date']);
+            $project->setStartDate($start);
+            $end = date_create($found_project['end_date']);
+            $project->setEndDate($end);
+            $project->setOverview($found_project['overview']); 
+            $project->setOwnerName($found_project['full_name']);
+            $project->setIsActive();
+        }
+
+        return $project;
+    }
+
+    public static function edit($id, $title, $start_date, $end_date, $overview)
+    {
+        $query = (new Db())->getConn()->prepare("UPDATE projects SET title=?, start_date=?, end_date=?, overview=? WHERE id=?");
+        return $query->execute([$title, $start_date, $end_date, $overview, $id]);
     }
   }
 ?>

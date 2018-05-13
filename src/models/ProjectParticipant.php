@@ -1,6 +1,8 @@
 <?php
 namespace models;
 use libs\Db;
+use models\User;
+
 class ProjectParticipant
 {
     private $project_id;
@@ -43,6 +45,23 @@ class ProjectParticipant
     {
         $query = (new Db())->getConn()->prepare("INSERT INTO `project_participants` (project_id, user_id) VALUES (?, ?)");
         return $query->execute([$this->project_id, $this->user_id]);
+    }
+
+    public static function getAllParticipantsOfProject($project_id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT u.full_name, u.id FROM project_participants p JOIN users u ON p.user_id = u.id WHERE p.project_id = '$project_id'");
+        $query->execute();
+
+        $participants = [];
+        while ($found_participant = $query->fetch())
+        {
+            $user = new User();            
+            $user->setFullName($found_participant["full_name"]);
+            $user->setId($found_participant["id"]);            
+            $participants[] = $user;
+        }
+
+        return $participants;
     }
   }
 ?>
