@@ -25,7 +25,7 @@
                             <p><span class="param"><i class="icon fa-user"></i> Project Owner:</span> <span class="info"><?=$project->getOwnerName()?></span></p>                            
                             <p><?=$project->getOverview()?></p>
                             <h4><i class="icon fa-users"></i> Participants:</h4>
-                            <ul>
+                            <ul id="participants-list">
                                 <?php
                                 foreach($participants as $user)
                                 {
@@ -33,8 +33,11 @@
                                 }
                                 ?>
                             </ul>
+                            <div id="new-member">
+                                <button class="button special" id="add-member-btn">Add member</button>
+                            </div>
                         </div>
-                        <div class="">
+                        <div class="6u">
                         <?php 
                             if($project->getIsActive())
                             {
@@ -82,6 +85,7 @@
         <script src="../assets/js/skel.min.js"></script>
         <script src="../assets/js/util.js"></script>
         <script src="../assets/js/main.js"></script>
-
+        <script src="../assets/js/search.users.js"></script>
+        <script src="../assets/js/add.member.js"></script>
 	</body>
 </html>

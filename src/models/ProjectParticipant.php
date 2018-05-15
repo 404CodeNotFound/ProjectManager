@@ -63,5 +63,11 @@ class ProjectParticipant
 
         return $participants;
     }
+
+    public static function removeMember($project_id, $user_id) 
+    {
+        $query = (new Db())->getConn()->prepare("DELETE FROM `project_participants` WHERE project_id='$project_id' AND user_id='$user_id'");
+        return $query->execute();
+    }
   }
 ?>

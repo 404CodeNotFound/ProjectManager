@@ -74,6 +74,14 @@
 		margin-top: 5%;	
 	}
 
+	#user-results {
+		padding: 3%;
+	}
+
+	#add-member-btn {
+		margin-bottom: 3%;
+	}
+
 /* Box Model */
 
 	*, *:before, *:after {
