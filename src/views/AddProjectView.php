@@ -12,6 +12,9 @@
                     <div class="inner">
                             <header id="header">
                                 <h1 class="logo">Create Project</h1>
+                                <ul class="icons">
+                                    <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
+                                </ul>
                             </header>
 
                             <section id="banner">
@@ -83,7 +86,7 @@
                                 <h2>Menu</h2>
                             </header>
                             <ul>
-                                <li><a href="./HomepageView.php">Homepage</a></li>
+                                <li><a href="./HomePageLoggedView.php">Homepage</a></li>
                                 <li><a href="generic.html">Dashboard</a></li>
                                 <li><a href="../controllers/GetAllProjects.php">Projects</a></li>
                                 <li>

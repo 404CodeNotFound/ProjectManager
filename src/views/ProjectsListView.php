@@ -12,6 +12,9 @@
                 <div class="inner">
                     <header id="header">
                         <h2>All Projects</h2>
+                        <ul class="icons">
+                            <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
+                        </ul>
                     </header>
                     <section class="banner">
                         <div class="content">
@@ -39,7 +42,7 @@
                                 <h2>Menu</h2>
                             </header>
                             <ul>
-                                <li><a href="../views/HomepageView.php">Homepage</a></li>
+                                <li><a href="../views/HomePageLoggedView.php">Homepage</a></li>
                                 <li><a href="generic.html">Dashboard</a></li>
                                 <li><a href="./GetAllProjects.php">Projects</a></li>
                                 <li>
