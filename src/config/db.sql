@@ -26,3 +26,26 @@ CREATE TABLE project_paticipants (
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (project_id) REFERENCES projects(id)
 );
+
+CREATE TABLE sprints (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  project_id INT NOT NULL,
+  start_date DATE,
+  end_date DATE,
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+);
+
+CREATE TABLE tasks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  status VARCHAR,
+  title VARCHAR(200),
+  description VARCHAR(500),
+  priority INT,
+  story_points INT,
+  sprint_id INT,
+  assigned_to INT,
+  FOREIGN KEY (sprint_id) REFERENCES sprints(id),
+  FOREIGN KEY (assigned_to) REFERENCES users(id)
+);
+

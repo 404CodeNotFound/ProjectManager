@@ -9,6 +9,10 @@
 	</head>
 	<body>
         <div id="wrapper">
+            <div id="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <span id="alert-content"></span>
+            </div>
             <div id="main">
                 <div class="inner">
                     <header id="header">
@@ -27,6 +31,8 @@
                             <p><span class="param"><i class="icon fa-calendar"></i> End:</span> <span class="info"><?=$project->getEndDate()->format('d/m/Y')?></span></p>
                             <p><span class="param"><i class="icon fa-user"></i> Project Owner:</span> <span class="info"><?=$project->getOwnerName()?></span></p>                            
                             <p><?=$project->getOverview()?></p>
+                            <div class="row">
+                            <div class="6u">
                             <h4><i class="icon fa-users"></i> Participants:</h4>
                             <ul id="participants-list">
                                 <?php
@@ -36,11 +42,24 @@
                                 }
                                 ?>
                             </ul>
-                            <div id="new-member">
+                        </div>
+                        <div class="6u">
+                            <h4><i class="icon fa-list"></i> Sprints:</h4>
+                            <ul id="sprints-list">
+                                <?php
+                                foreach($sprints as $sprint)
+                                {
+                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().'</a></li>';                                    
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                            <div class="6u" id="new-member">
                                 <button class="button special" id="add-member-btn">Add member</button>
                             </div>
                         </div>
-                        <div class="6u">
+                        <div>
                         <?php 
                             if($project->getIsActive())
                             {
@@ -49,6 +68,7 @@
                             ?>
                             <a href=<?php echo "./GetEditProject.php?id=".$project_id ?> class="button special">Edit</a>
                         </div>
+
                     </section>
                 </div>
             </div>
@@ -81,14 +101,14 @@
                         </footer>
                 </div>
             </div>
-
         </div>
 
         <script src="../assets/js/jquery.min.js"></script>
         <script src="../assets/js/skel.min.js"></script>
         <script src="../assets/js/util.js"></script>
         <script src="../assets/js/main.js"></script>
-        <script src="../assets/js/search.users.js"></script>
-        <script src="../assets/js/add.member.js"></script>
+        <script src="../assets/js/search-users.js"></script>
+        <script src="../assets/js/show-alerts.js"></script>
+        <script src="../assets/js/add-member-to-existing-project.js"></script>
 	</body>
 </html>

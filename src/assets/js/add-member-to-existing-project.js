@@ -29,7 +29,7 @@ function addSearchResultToDom(user, contextNode) {
 
     input.addEventListener('change', function() {
         if(this.checked) {
-            postMember(this.value)
+            postMember(this.value, this);
         } else {
             deleteMember(user.username);
         }
@@ -63,19 +63,19 @@ function removeSelectedUserFromDom(username) {
     a.parentNode.remove();
 }
 
-function postMember(username) {
+function postMember(username, checkbox) {
     const projectId = window.location.href.split('=')[1];
     let request = new XMLHttpRequest();
     request.open("POST", `../controllers/AddMember.php?project_id=${projectId}`, true);
     request.setRequestHeader('Content-type', 'application/json');
 
     request.onload = function(e) {
-        let fullName = request.response;
-        if(fullName) {
-            console.log(fullName);
-            addSelectedUserToDom(username, fullName);
+        let response = JSON.parse(request.response);
+        if(!response.hasOwnProperty('message')) {
+            addSelectedUserToDom(username, response);
         } else {
-            // cannot add member
+            checkbox.checked = false;
+            showErrorAlert(response.message);
         }
     }
 
@@ -89,11 +89,11 @@ function deleteMember(username) {
     request.setRequestHeader('Content-type', 'application/json');
 
     request.onload = function(e) {
-        let isSuccessfull = request.response;
-        if(isSuccessfull) {
+        let response = request.response;
+        if(!response.hasOwnProperty('message')) {
             removeSelectedUserFromDom(username);
         } else {
-            // cannot delete member
+            showErrorAlert(response.message);
         }
     }
 

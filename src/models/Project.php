@@ -130,12 +130,13 @@ class Project
 
     public static function getProjectById($id)
     {
-        $query = (new Db())->getConn()->prepare("SELECT p.title, p.start_date, p.end_date, p.overview, u.full_name FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.id = '$id'");
+        $query = (new Db())->getConn()->prepare("SELECT p.id, p.title, p.start_date, p.end_date, p.overview, u.full_name FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.id = '$id'");
         $query->execute();
 
         $project = new Project();
         while ($found_project = $query->fetch())
         {
+            $project->setId($found_project['id']);
             $project->setTitle($found_project['title']);
             $start = date_create($found_project['start_date']);
             $project->setStartDate($start);

@@ -64,6 +64,20 @@ class ProjectParticipant
         return $participants;
     }
 
+    public static function findParticipantOfProject($user_id, $project_id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT u.full_name, u.id FROM project_participants p JOIN users u ON p.user_id = u.id WHERE p.project_id = '$project_id' AND p.user_id = '$user_id'");
+        $query->execute();
+
+        $user = new User();            
+        while ($found_participant = $query->fetch())
+        {
+            $user->setId($found_participant["id"]);            
+        }
+
+        return $user;
+    }
+
     public static function removeMember($project_id, $user_id) 
     {
         $query = (new Db())->getConn()->prepare("DELETE FROM `project_participants` WHERE project_id='$project_id' AND user_id='$user_id'");
