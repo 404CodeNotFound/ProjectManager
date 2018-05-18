@@ -130,7 +130,7 @@ class Project
 
     public static function getProjectById($id)
     {
-        $query = (new Db())->getConn()->prepare("SELECT p.id, p.title, p.start_date, p.end_date, p.overview, u.full_name FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.id = '$id'");
+        $query = (new Db())->getConn()->prepare("SELECT p.id, p.title, p.start_date, p.end_date, p.overview, u.full_name, p.owner_id FROM projects p JOIN users u ON p.owner_id = u.id WHERE p.id = '$id'");
         $query->execute();
 
         $project = new Project();
@@ -143,6 +143,7 @@ class Project
             $end = date_create($found_project['end_date']);
             $project->setEndDate($end);
             $project->setOverview($found_project['overview']); 
+            $project->setOwner($found_project['owner_id']);
             $project->setOwnerName($found_project['full_name']);
             $project->setIsActive();
         }
@@ -156,9 +157,9 @@ class Project
         return $query->execute([$title, $start_date, $end_date, $overview, $id]);
     }
 
-    public static function getAll()
+    public static function getAll($user_id)
     {
-        $query = (new Db())->getConn()->prepare("SELECT * FROM projects ORDER BY title");
+        $query = (new Db())->getConn()->prepare("SELECT id, title FROM projects p JOIN project_participants participants ON p.id = participants.project_id WHERE participants.user_id = '$user_id' ORDER BY title");
         $query->execute();
 
         $projects = [];

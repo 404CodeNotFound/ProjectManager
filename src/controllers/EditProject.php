@@ -3,12 +3,13 @@ require_once "../libs/Startup.php";
 Startup::_init(true);
 use helpers\Validator;
 use models\Project;
+use models\Error;
 
 session_start();
 if(!isset($_SESSION['current_user_id']))
 {
     http_response_code(401);
-	header('Location: ../views/ErrorPage');
+	header('Location: ../views/HomePageView.php');
 }
 else
 {
@@ -24,7 +25,8 @@ else
     if ($isSuccessful) {
     	header('Location: ./GetProject.php?project_id='.$id);
     } else {
-        echo "<p> Error! The project was not inserted! </p>";
+        $error = new Error("Error! Project was not updated.");
+        echo json_encode($error);
     }
 }
 ?> 

@@ -25,7 +25,7 @@
                                         </div>
                                     </div>
                                     <div class="8u 12u$(xsmall)">
-                                        <input type="text" name="password" id="password" placeholder="Password" />
+                                        <input type="password" name="password" id="password" placeholder="Password" />
                                         <div class="error">
                                             <?php if(isset($_GET['password']) && $_GET['password']):?>
                                                 Password is required.
@@ -34,7 +34,7 @@
                                     </div>
 
                                     <div class="8u 12u$(xsmall)">
-                                        <input type="text" name="repeated_password" id="repeated-password" placeholder="Repeat Password" />
+                                        <input type="password" name="repeated_password" id="repeated-password" placeholder="Repeat Password" />
                                         <div class="error">
                                             <?php if(isset($_GET['repeated_password']) && $_GET['repeated_password']):?>
                                                 Passwords does not match.

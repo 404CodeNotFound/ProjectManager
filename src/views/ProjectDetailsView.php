@@ -49,15 +49,20 @@
                                 <?php
                                 foreach($sprints as $sprint)
                                 {
-                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().'</a></li>';                                    
+                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().'</a></li>';                                  
                                 }
                                 ?>
                             </ul>
                         </div>
                     </div>
-                            <div class="6u" id="new-member">
+                    <?php
+                    if($current_user === $project->getOwner())
+                    {
+                        echo '<div class="6u" id="new-member">
                                 <button class="button special" id="add-member-btn">Add member</button>
-                            </div>
+                            </div>';
+                    }
+                            ?>
                         </div>
                         <div>
                         <?php 
@@ -65,8 +70,12 @@
                             {
                                 echo '<span class="button default disabled">Active</span>';
                             }
+                            
+                            if($current_user === $project->getOwner())
+                            {
+                                echo '<a href="./GetEditProject.php?id='.$project_id.'"class="button special">Edit</a>';
+                            }
                             ?>
-                            <a href=<?php echo "./GetEditProject.php?id=".$project_id ?> class="button special">Edit</a>
                         </div>
 
                     </section>
