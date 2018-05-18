@@ -1,23 +1,22 @@
 CREATE DATABASE IF NOT EXISTS `project-manager-db` COLLATE utf8mb4_unicode_ci;
 USE `project-manager-db`;
 
-CREATE TABLE projects (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(128),
-  start_date DATE,
-  end_date DATE,
-  overview VARCHAR(1000),
-  is_active BOOLEAN,
-  owner_id INT NOT NULL,
-  FOREIGN KEY (owner_id) REFERENCES users(id)
-);
-
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50),
   full_name VARCHAR(128),
   email VARCHAR(50),
   password VARCHAR(128),
+);
+
+CREATE TABLE projects (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(128),
+  start_date DATE,
+  end_date DATE,
+  overview VARCHAR(1000),
+  owner_id INT NOT NULL,
+  FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
 CREATE TABLE project_paticipants (

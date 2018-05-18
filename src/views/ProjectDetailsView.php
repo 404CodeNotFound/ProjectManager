@@ -25,7 +25,16 @@
                         <div class="content" id="project-details">
                             <header>
                                 <h1><?=$project->getTitle()?></h1>
-                                <p><span class="info"><?=$remains->format('%D%')?></span> days more.</p>
+                                <?php 
+                                if($project->getIsActive())
+                                {
+                                    echo '<p><span class="info">'.$remains->format('%a').'</span> days more.</p>';
+                                }
+                                else
+                                {
+                                    echo '<p>This project is not active.</p>';
+                                }
+                                ?>
                             </header>
                             <p><span class="param"><i class="icon fa-calendar"></i> Start:</span> <span class="info"><?=$project->getStartDate()->format('d/m/Y')?></span></p>
                             <p><span class="param"><i class="icon fa-calendar"></i> End:</span> <span class="info"><?=$project->getEndDate()->format('d/m/Y')?></span></p>
