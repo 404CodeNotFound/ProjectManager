@@ -107,8 +107,7 @@ class Project
     {    
         $current_date = new DateTime();
         $current_date->sub(new DateInterval('P1D'));
-		$this->is_active = $current_date->getTimestamp() >= $this->start_date->getTimestamp() && 
-            $current_date->getTimestamp() <= $this->end_date->getTimestamp();
+		$this->is_active = true;
     }
 
     public function getIsActive()

@@ -25,6 +25,9 @@ function sendForm(project) {
     request.onload = function(e) {
         let response = request.response;
         console.log(response);
+        if(response) {
+            window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php')
+        }
     }
 
     request.send(project);

@@ -16,16 +16,21 @@
                             <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
                         </ul>
                     </header>
-                    <section class="banner">
-                        <div class="content">
-                            <ul class="alt">
+                    <section class="banner">      
+                        <div class="content row">
+                            
+                            <ul class="alt 10u">
                                 <?php 
                                     foreach($projects as $project) 
                                     {
-                                        echo "<li><a href='./GetProject.php?project_id=".$project->getId()."'>".$project->getTitle()."</li>";
+                                        echo "<li><a href='./GetProject.php?project_id=".$project->getId()."'>".$project->getTitle()."</a></li>";
                                     }
                                 ?>
                             </ul>
+                            
+                        </div>
+                        <div class="2u">
+                            <a class="button special" href="../views/AddProjectView.php">Create project</a>
                         </div>
                     </section>
                 </div>
