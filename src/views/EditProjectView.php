@@ -21,7 +21,8 @@
                                 <form method="POST" action=<?php echo "./EditProject.php?id=".$project_id ?> id="edit-form">
                                     <div class="row uniform">
                                             <div class="12u 12u$(xsmall)">
-                                                <input type="text" name="title" id="title" placeholder="Title" value=<?=$project->getTitle()?> required />
+                                                <input type="text" name="title" id="title" placeholder="Title" 
+                                                value="<?=$project->getTitle()?>" required />
                                                 <div class="error" id="title-row">
                                                     <?php if(isset($_GET['title']) && $_GET['title'] === 'false'):?>
                                                         Project title is required.

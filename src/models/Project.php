@@ -138,6 +138,7 @@ class Project
         $project = new Project();
         while ($found_project = $query->fetch())
         {
+
             $project->setId($found_project['id']);
             $project->setTitle($found_project['title']);
             $start = date_create($found_project['start_date']);
