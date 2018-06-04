@@ -19,7 +19,7 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="text" name="username" id="username" placeholder="Username" required />
                                         <div class="error">
-                                            <?php if(isset($_GET['username']) && $_GET['username']):?>
+                                            <?php if(isset($_GET['username']) && $_GET['username'] === 'false'):?>
                                                 Username is required.
                                             <?php endif?>
                                         </div>
@@ -27,7 +27,7 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="password" name="password" id="password" placeholder="Password" />
                                         <div class="error">
-                                            <?php if(isset($_GET['password']) && $_GET['password']):?>
+                                            <?php if(isset($_GET['password']) && $_GET['password'] === 'false'):?>
                                                 Password is required.
                                             <?php endif?>
                                         </div>
@@ -36,7 +36,7 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="password" name="repeated_password" id="repeated-password" placeholder="Repeat Password" />
                                         <div class="error">
-                                            <?php if(isset($_GET['repeated_password']) && $_GET['repeated_password']):?>
+                                            <?php if(isset($_GET['repeated_password']) && $_GET['repeated_password'] === 'false'):?>
                                                 Passwords does not match.
                                             <?php endif?>
                                         </div>
@@ -45,7 +45,7 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="email" name="email" id="email" placeholder="Email" />
                                         <div class="error">
-                                            <?php if(isset($_GET['email']) && $_GET['email']):?>
+                                            <?php if(isset($_GET['email']) && $_GET['email'] === 'false'):?>
                                                 Email is required and should be valid.
                                             <?php endif?>
                                         </div>
@@ -54,7 +54,7 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="text" name="full_name" id="full-name" placeholder="Full Name" />
                                         <div class="error">
-                                            <?php if(isset($_GET['full_name']) && $_GET['full_name']):?>
+                                            <?php if(isset($_GET['full_name']) && $_GET['full_name'] === 'false'):?>
                                                 Full name is required.
                                             <?php endif?>
                                         </div>

@@ -19,15 +19,18 @@
                                     <div class="8u 12u$(xsmall)">
                                         <input type="text" name="username" id="username" placeholder="Username" required />
                                         <div class="error">
-                                            <?php if(isset($_GET['username']) && $_GET['username']):?>
+                                            <?php if(isset($_GET['username']) && $_GET['username'] == 'false'):?>
                                                 Username is required.
+                                            <?php endif?>
+                                            <?php if(isset($_GET['found']) && $_GET['found'] == 'false'):?>
+                                                Incorrect username or password.
                                             <?php endif?>
                                         </div>
                                     </div>
                                     <div class="8u 12u$(xsmall)">
                                         <input type="password" name="password" id="password" placeholder="Password" />
                                         <div class="error">
-                                            <?php if(isset($_GET['password']) && $_GET['password']):?>
+                                            <?php if(isset($_GET['password']) && $_GET['password'] == 'false'):?>
                                                 Password is required.
                                             <?php endif?>
                                         </div>

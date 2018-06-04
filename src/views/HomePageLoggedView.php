@@ -24,10 +24,6 @@
 											<p>A free and fully responsive site template</p>
 										</header>
 										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-										<ul class="actions">
-											<li><a href="./LoginView.php" class="button big">Login</a></li>
-											<li><a href="./RegisterView.php" class="button big">Register</a></li>
-										</ul>
 									</div>
 									<span class="image object">
 										<img width="400px"src="https://cdn-images-1.medium.com/max/2000/1*u4EBes6Muu2fy7iM8igMug.jpeg" alt="" />
