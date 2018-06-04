@@ -1,20 +1,43 @@
 const submitBtn = document.getElementById('create-project');
+const validationErrors = [];
 
 submitBtn.onclick = function(event) {
-    const project = getAllDataFromForm();
+    removeValidationErrors();
+    let project;
+
+    try {
+        project = getAllDataFromForm();
+    } catch (error) {
+        return false;
+    }
+
     sendForm(JSON.stringify(project));
 }
 
 function getAllDataFromForm() {
-    let project = {
-        participants: selectedUsers,
-        title: document.getElementById('title').value,
-        start_date: document.getElementById('start-date').value,
-        end_date: document.getElementById('end-date').value,
-        overview: document.getElementById('overview').value
-    };
+    const title = document.getElementById('title').value;
+    const start_date = document.getElementById('start-date').value;
+    const end_date = document.getElementById('end-date').value;
+    const overview = document.getElementById('overview').value;
 
-    return project;
+    const isTitleValid = validateTitle(title);
+    const isStartDateValid = validateStartDate(start_date, end_date);
+    const isEndDateValid = validateEndDate(start_date, end_date);
+    const isOverviewValid = validateOverview(overview);
+
+    if(isTitleValid && isStartDateValid && isEndDateValid && isOverviewValid) {
+        let project = {
+            participants: selectedUsers,
+            title: title,
+            start_date: start_date,
+            end_date: end_date,
+            overview: overview
+        };
+
+        return project;
+    } else {
+        throw new Error();
+    }     
 }
 
 function sendForm(project) {

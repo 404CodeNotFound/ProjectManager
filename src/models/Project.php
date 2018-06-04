@@ -105,9 +105,7 @@ class Project
 
     public function setIsActive()
     {    
-        $current_date = new DateTime();
-        $current_date->sub(new DateInterval('P1D'));
-		$this->is_active = true;
+        $this->is_active = true;
     }
 
     public function getIsActive()
