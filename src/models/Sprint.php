@@ -22,7 +22,7 @@ class Sprint
         $instance = new self();
         $instance->setName($name);
         $instance->setStartDate($start_date);
-		$instance->setEndDate($end_date);
+        $instance->setEndDate($end_date);
         $instance->setGoal($goal);
         $instance->setProject($project);
         
@@ -99,14 +99,19 @@ class Sprint
 		return $this->project_title;
     }
 
-    public function setIsActive()
-    {
-        $this->is_active = true;
-    }
-
     public function getIsActive()
     {
-        return $this->is_active;
+        $current_date = date_create(date("Y-m-d"));
+        $diff = (int)date_diff($current_date, $this->end_date)->format("%r%a");
+
+        if($diff > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function insert()
@@ -150,7 +155,6 @@ class Sprint
             $sprint->setGoal($sprintData['goal']);
             $sprint->setProject($sprintData['project_id']);
             $sprint->setProjectTitle($sprintData['title']);
-            $sprint->setIsActive();      
         }
 
         return $sprint;

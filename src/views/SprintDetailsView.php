@@ -25,6 +25,7 @@
                         <div class="content" id="sprint-details">
                             <header>
                                 <h1><?=$sprint->getName()?></h1>
+                                
                                 <?php 
                                 if(!$sprint->getIsActive())
                                 {
