@@ -27,8 +27,7 @@ class Project
         $instance->setStartDate($start_date);
 		$instance->setEndDate($end_date);
         $instance->setOverview($overview);
-        $instance->setOwner($owner);
-        $instance->setIsActive();        
+        $instance->setOwner($owner);       
         
         return $instance;
     }
@@ -103,14 +102,20 @@ class Project
 		return $this->owner_name;
     }
 
-    public function setIsActive()
-    {    
-        $this->is_active = true;
-    }
-
     public function getIsActive()
     {    
-		return $this->is_active;
+		$current_date = date_create(date("Y-m-d"));
+        $current_start_dates_diff = (int)date_diff($this->start_date, $current_date)->format("%r%a");
+        $current_end_dates_diff = (int)date_diff($current_date, $this->end_date)->format("%r%a");
+
+        if($current_start_dates_diff >= 0 && $current_end_dates_diff >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function insert()
@@ -148,7 +153,6 @@ class Project
             $project->setOverview($found_project['overview']); 
             $project->setOwner($found_project['owner_id']);
             $project->setOwnerName($found_project['full_name']);
-            $project->setIsActive();
         }
 
         return $project;

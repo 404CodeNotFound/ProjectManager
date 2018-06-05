@@ -49,7 +49,14 @@ function sendForm(project) {
         let response = request.response;
         console.log(response);
         if(response) {
-            window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php')
+            try {
+                let error = JSON.parse(response);
+                if(error.hasOwnProperty('message') ) {
+                    window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${error.message}&status_code=${error.status_code}`);
+                } 
+            } catch (e) {
+                window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php');
+            }
         }
     }
 

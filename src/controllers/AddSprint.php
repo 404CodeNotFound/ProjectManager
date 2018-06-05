@@ -2,6 +2,7 @@
 require_once "../libs/Startup.php";
 Startup::_init(true);
 use models\Sprint;
+use models\Error;
 
 session_start();
 if(!isset($_SESSION['current_user_id']))
@@ -21,12 +22,12 @@ else
     $project = $data['project_id'];
 
     $sprint = Sprint::create($name, $start_date, $end_date, $goal, $project);
-    $isSuccessful = $sprint->insert();
-
-    if ($isSuccessful) {
-        echo $isSuccessful;
-    } else {
-        echo "<p> Error! The sprint was not inserted! </p>";
+    try {
+        $isSuccessful = $sprint->insert();
+        return $isSuccessful;
+    } catch (Exception $ex) {
+        $e = new Error("Server error.", 500);
+        echo json_encode($e);
     }
 }
 ?>

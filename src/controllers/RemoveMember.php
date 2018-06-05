@@ -9,8 +9,9 @@ use models\Error;
 session_start();
 if(!isset($_SESSION['current_user_id']))
 {
-    http_response_code(401);
-	header('Location: ../views/HomePageView.php');
+	http_send_status(401);
+    $error = new Error("Only authenticated users can remove participants of project.");
+	echo json_encode($error);
 }
 else
 {
@@ -21,12 +22,12 @@ else
 	$project = Project::getProjectById($project_id);
 	if(!$project->getId())
 	{
-		$error = new Error("Project was not found.");
+		$error = new Error("Project was not found.", 404);
 		echo json_encode($error);
 	}
 	else if($project->getOwner() !== $current_user)
 	{
-		$error = new Error("You cannot remove member from project because you are not the owner.");
+		$error = new Error("You cannot remove member from project because you are not the owner.", 403);
 		echo json_encode($error);
 	}
 	else 
@@ -34,18 +35,15 @@ else
 		$user = User::getUserByUsername($username);
 		if(!$user->getId())
 		{
-			$error = new Error("Selected user was not found.");
+			$error = new Error("Selected user was not found.", 404);
 			echo json_encode($error);
 		}
 		else 
 		{
-			$isSuccessful = ProjectParticipant::removeMember($project_id, $user->getId());
-			if($isSuccessful)
-			{
-				echo $isSuccessful;
-			}
-			else
-			{
+			try {
+				$isSuccessful = ProjectParticipant::removeMember($project_id, $user->getId());
+				return $isSuccessful;
+			} catch (Exception $ex) {
 				$error = new Error("Cannot remove user from this project.");
 				echo json_encode($error);
 			}

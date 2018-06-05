@@ -4,12 +4,13 @@ Startup::_init(true);
 use helpers\Validator;
 use models\Project;
 use models\ProjectParticipant;
+use models\Error;
 
 session_start();
 if(!isset($_SESSION['current_user_id']))
 {
-    http_response_code(401);
-	header('Location: ../views/HomePageView.php');
+    $error = new Error("Only authorized users can create new project.", 401);
+    echo json_encode($error);
 }
 else
 {
@@ -33,25 +34,19 @@ else
 	}
 
     $project = Project::create($title, $start_date, $end_date, $overview, $current_user);
-    $isSuccessful = $project->insert();
 
-    if ($isSuccessful) {
-    	$project_id = Project::getProjectIdByTitle($title);
+    try {
+        $isSuccessful = $project->insert();
+        $project_id = Project::getProjectIdByTitle($title);
 
-    	foreach ($participants as $participant_id) {
-    		$link = ProjectParticipant::create($project_id, $participant_id);
-    		$isSuccessful = $link->insert();
-
-    		if(!$isSuccessful)
-    		{
-    			echo "<p> Error! The project was not inserted! </p>";
-    			break;
-    		}
-    	}
-
-    	echo $isSuccessful;
-    } else {
-        echo "<p> Error! The project was not inserted! </p>";
+        foreach ($participants as $participant_id) {
+            $link = ProjectParticipant::create($project_id, $participant_id);
+            $link->insert();
+        }
+        
+    } catch (Exception $ex) {
+        $error = new Error("Server error.", 500);
+        echo json_encode($error);
     }
 }
 ?> 
