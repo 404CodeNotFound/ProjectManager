@@ -54,6 +54,10 @@
 		padding-left: 3%;
 	}
 
+	.sprint-edit {
+		display: block !important;;
+	}
+
 	#login-inputs, #register-inputs {
 		padding-left: 25%;
 	}
@@ -3929,7 +3933,7 @@
 		color: #f56a6a;		
 	}
 
-	#project-details span.param {
+	#project-details span.param, #sprint-details span.param {
 		font-size: 1em;
 		color: #3d4449;
 		font-family: "Roboto Slab", serif;

@@ -1,27 +1,30 @@
 <?php
 namespace models;
 use libs\Db;
+
 class Sprint
 {
     private $id;
     private $name;
     private $start_date;
     private $end_date;
-    private $project_id;   
+    private $goal;
+    private $project_id;
+    private $project_title;
+    private $is_active;
     
     public function __construct() {
 
     }
 
-    public static function create($title, $start_date, $end_date, $overview, $owner)
+    public static function create($name, $start_date, $end_date, $goal, $project)
     {
         $instance = new self();
-        $instance->setTitle($title);
+        $instance->setName($name);
         $instance->setStartDate($start_date);
 		$instance->setEndDate($end_date);
-        $instance->setOverview($overview);
-        $instance->setOwner($owner);
-        $instance->setIsActive();        
+        $instance->setGoal($goal);
+        $instance->setProject($project);
         
         return $instance;
     }
@@ -66,14 +69,51 @@ class Sprint
         return $this->end_date;
     }
 
-    public function setProjectId($project_id)
+    public function setGoal($goal)
+    {
+        $this->goal = $goal;
+    }
+
+    public function getGoal()
+    {
+        return $this->goal;
+    }
+
+    public function setProject($project_id)
     {    
 		$this->project_id = $project_id;
     }
 
-    public function getProjectId()
+    public function getProject()
     {    
 		return $this->project_id;
+    }
+
+    public function setProjectTitle($project_title)
+    {    
+		$this->project_title = $project_title;
+    }
+
+    public function getProjectTitle()
+    {    
+		return $this->project_title;
+    }
+
+    public function setIsActive()
+    {
+        $this->is_active = true;
+    }
+
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+
+    public function insert()
+    {
+        $query = (new Db())->getConn()->prepare("INSERT INTO `sprints` (name, start_date, end_date, goal, project_id) VALUES (?, ?, ?, ?, ?) ");
+        
+        return $query->execute([$this->name, $this->start_date, $this->end_date, $this->goal, $this->project_id]);
     }
 
     public static function getAllSprintsOfProject($project_id)
@@ -92,5 +132,30 @@ class Sprint
 
         return $sprints;
     }
+
+    public static function getSprintById($id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT s.id, s.name, s.start_date, s.end_date, s.goal, s.project_id, p.title FROM sprints s JOIN projects p ON s.project_id = p.id WHERE s.id = '$id'");
+        $query->execute();
+
+        $sprint = new Sprint();
+        while ($sprintData = $query->fetch())
+        {
+            $sprint->setId($sprintData['id']);
+            $sprint->setName($sprintData['name']);
+            $start = date_create($sprintData['start_date']);
+            $sprint->setStartDate($start);
+            $end = date_create($sprintData['end_date']);
+            $sprint->setEndDate($end);
+            $sprint->setGoal($sprintData['goal']);
+            $sprint->setProject($sprintData['project_id']);
+            $sprint->setProjectTitle($sprintData['title']);
+            $sprint->setIsActive();      
+        }
+
+        return $sprint;
+    }
+
+
   }
 ?>

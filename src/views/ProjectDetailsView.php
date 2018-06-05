@@ -53,7 +53,11 @@
                             </ul>
                         </div>
                         <div class="6u">
-                            <h4><i class="icon fa-list"></i> Sprints:</h4>
+                            <h4>
+                                <i class="icon fa-list"></i> Sprints:
+                                <a href="../views/AddSprintView.php?project_id=<?=$project_id?>" class="button special">New</a>
+                            </h4>
+                            
                             <ul id="sprints-list">
                                 <?php
                                 foreach($sprints as $sprint)

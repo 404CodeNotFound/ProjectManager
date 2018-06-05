@@ -19,7 +19,7 @@ CREATE TABLE projects (
   FOREIGN KEY (owner_id) REFERENCES users(id)
 );
 
-CREATE TABLE project_paticipants (
+CREATE TABLE project_participants (
   user_id INT NOT NULL,
   project_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id),
@@ -37,7 +37,7 @@ CREATE TABLE sprints (
 
 CREATE TABLE tasks (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  status VARCHAR,
+  status VARCHAR(50),
   title VARCHAR(200),
   description VARCHAR(500),
   priority INT,
