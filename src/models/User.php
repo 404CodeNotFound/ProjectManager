@@ -130,6 +130,23 @@ class User implements \JsonSerializable
         return $found_users;
     }
 
+    public static function getAllActiveSprints($user_id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT s.id, s.name FROM project_participants pp JOIN projects p ON pp.project_id = p.id JOIN sprints s ON p.id = s.project_id WHERE pp.user_id = '$user_id'");
+        $query->execute();
+
+        $active_sprints = [];
+        while ($current_sprint = $query->fetch())
+        {
+            $sprint = new Sprint();
+            $sprint->setId($current_sprint['id']);
+            $sprint->setName($current_sprint['name']);
+            $active_sprints[] = $sprint;
+        }
+
+        return $active_sprints;
+    }
+
     public function jsonSerialize() {
         return (object) get_object_vars($this);
     }

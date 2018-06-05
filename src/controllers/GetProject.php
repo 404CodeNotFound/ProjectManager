@@ -4,6 +4,7 @@ Startup::_init(true);
 use models\Project;
 use models\ProjectParticipant;
 use models\Sprint;
+use models\User;
 use models\Error;
 
 session_start();
@@ -14,6 +15,9 @@ if(!isset($_SESSION['current_user_id']))
 }
 else
 {
+	$current_user = $_SESSION['current_user_id'];
+    $user_active_sprints = User::getAllActiveSprints($current_user);
+	
 	$project_id = $_GET['project_id'];
 	$project = Project::getProjectById($project_id);
 	$end_date = $project->getEndDate();
@@ -24,7 +28,6 @@ else
 	$participants = ProjectParticipant::getAllParticipantsOfProject($project_id);
 	$sprints = Sprint::getAllSprintsOfProject($project_id);
 
-	$current_user = $_SESSION['current_user_id'];
 	$isParticipantOfProject = false;
 	foreach ($participants as $participant) {
 		if($participant->getId() === $current_user)

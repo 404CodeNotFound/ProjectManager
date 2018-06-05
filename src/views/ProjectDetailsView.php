@@ -112,7 +112,12 @@
                                 <li>
                                     <span class="opener">Sprints</span>
                                     <ul>
-                                        <li><a href="#">Active Sprint</a></li>
+                                        <?php
+                                        foreach($user_active_sprints as $sprint)
+                                        {
+                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().'</a></li>';                                  
+                                        }
+                                        ?>
                                     </ul>
                                 </li>
                             </ul>
