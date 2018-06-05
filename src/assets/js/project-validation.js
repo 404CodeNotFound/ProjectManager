@@ -20,6 +20,18 @@ function validateStartDate(startDate, endDate) {
     return true;
 }
 
+function validateStartDateOnEdit(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    if(!startDate.trim() || start > end) {
+        addValidationError("start-date-row", "Start date is invalid.");
+        return false;
+    }
+
+    return true;
+}
+
 function validateEndDate(startDate, endDate) {
     const start = new Date(startDate);
     const end = new Date(endDate);

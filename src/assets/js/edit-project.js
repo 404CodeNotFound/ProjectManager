@@ -7,7 +7,7 @@ form.onsubmit = function() {
     const overview = document.getElementById('overview').value;
 
     const isTitleValid = validateTitle(title);
-    const isStartDateValid = validateStartDate(start_date, end_date);
+    const isStartDateValid = validateStartDateOnEdit(start_date, end_date);
     const isEndDateValid = validateEndDate(start_date, end_date);
     const isOverviewValid = validateOverview(overview);
 
