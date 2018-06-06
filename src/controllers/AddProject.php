@@ -26,7 +26,7 @@ else
 
 	foreach ($data['participants'] as $participant) {
 		foreach ($participant as $key => $value) {
-			if($key === 'id') 
+			if($key === 'id' && $value != $current_user) 
 			{
 				$participants[] = $value;
 			}

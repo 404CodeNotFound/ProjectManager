@@ -11,6 +11,7 @@ function validateStartDate(startDate, endDate) {
     const start = new Date(startDate);
     const end = new Date(endDate);
     const current= new Date();
+    current.setHours(0,0,0,0);
 
     if(!startDate || start > end || start < current) {
         addValidationError("start-date-row", "Start date is invalid.");
@@ -66,7 +67,6 @@ function addValidationError(elementId, message) {
     const parentElement = document.getElementById(elementId);
     const errorElement = document.createElement('div');
     errorElement.innerText = message;
-    errorElement.class = "error";
 
     parentElement.appendChild(errorElement);
 }

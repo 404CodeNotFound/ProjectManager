@@ -23,35 +23,23 @@
                                             <div class="12u 12u$(xsmall)">
                                                 <input type="text" name="title" id="title" placeholder="Title" required />
                                                 <div class="error" id="title-row">
-                                                    <?php if(isset($_GET['title']) && $_GET['title'] === 'false'):?>
-                                                        Project title is required.
-                                                    <?php endif?>
                                                 </div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
                                                 <label for="start-date" class="calendar-label">From</label>
                                                 <input type="date" name="start_date" id="start-date" required />
                                                 <div class="error" id="start-date-row">
-                                                    <?php if(isset($_GET['start_date']) && $_GET['start_date'] === 'false'):?>
-                                                        Start date is required and could not be in the past.
-                                                    <?php endif?>
                                                 </div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
                                                 <label for="end-date" class="calendar-label">To</label>
                                                 <input type="date" name="end_date" id="end-date" required />
                                                 <div class="error" id="end-date-row">
-                                                    <?php if(isset($_GET['end_date']) && $_GET['end_date'] === 'false'):?>
-                                                        End date is required and could not be before start date.
-                                                    <?php endif?>
                                                 </div>
                                             </div>
                                             <div class="12u$">
                                                 <textarea name="overview" id="overview" placeholder="Enter project overview..." rows="6"></textarea>
                                                 <div class="error" id="overview-row">
-                                                    <?php if(isset($_GET['overview']) && $_GET['overview'] === 'false'):?>
-                                                        Overview is required.
-                                                    <?php endif?>
                                                 </div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
