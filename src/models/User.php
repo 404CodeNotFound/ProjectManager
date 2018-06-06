@@ -132,17 +132,18 @@ class User implements \JsonSerializable
 
     public static function getAllActiveSprints($user_id)
     {
-        $query = (new Db())->getConn()->prepare("SELECT s.id, s.name, s.start_date, s.end_date FROM project_participants pp JOIN projects p ON pp.project_id = p.id JOIN sprints s ON p.id = s.project_id WHERE pp.user_id = '$user_id'");
+        $query = (new Db())->getConn()->prepare("SELECT s.id, s.name, s.start_date, s.end_date, p.title FROM project_participants pp JOIN projects p ON pp.project_id = p.id JOIN sprints s ON p.id = s.project_id WHERE pp.user_id = '$user_id'");
         $query->execute();
 
         $active_sprints = [];
         while ($current_sprint = $query->fetch())
         {
-            $sprint = new Sprint();      
+            $sprint = new Sprint();
             $sprint->setId($current_sprint['id']);
             $sprint->setName($current_sprint['name']);
             $sprint->setStartDate(date_create($current_sprint['start_date']));
-            $sprint->setEndDate(date_create($current_sprint['end_date']));     
+            $sprint->setEndDate(date_create($current_sprint['end_date']));
+            $sprint->setProjectTitle($current_sprint['title']);
             
             if ($sprint->getIsActive())
             {

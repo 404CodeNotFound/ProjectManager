@@ -96,7 +96,7 @@
                                 <?php
                                 foreach($user_active_sprints as $sprint)
                                 {
-                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().'</a></li>';                                  
+                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
                                 }
                                 ?>
                             </ul>
