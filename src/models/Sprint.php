@@ -102,9 +102,10 @@ class Sprint
     public function getIsActive()
     {
         $current_date = date_create(date("Y-m-d"));
-        $diff = (int)date_diff($current_date, $this->end_date)->format("%r%a");
+        $start_current_date_diff = (int)date_diff($this->start_date, $current_date)->format("%r%a");
+        $current_end_date_diff = (int)date_diff($current_date, $this->end_date)->format("%r%a");
 
-        if($diff > 0)
+        if($start_current_date_diff >= 0 && $current_end_date_diff >= 0)
         {
             return true;
         }
@@ -160,6 +161,11 @@ class Sprint
         return $sprint;
     }
 
-
+    public static function edit($sprint_id, $name, $start_date, $end_date, $goal)
+    {
+        $query = (new Db())->getConn()->prepare("UPDATE sprints SET name=?, start_date=?, end_date=?, goal=? WHERE id=?");
+        
+        return $query->execute([$name, $start_date, $end_date, $goal, $sprint_id]);
+    }
   }
 ?>

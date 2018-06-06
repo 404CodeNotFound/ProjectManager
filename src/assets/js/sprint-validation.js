@@ -22,6 +22,21 @@ function validateStartDate(startDate, endDate) {
     return true;
 }
 
+function validateStartDateOnEdit(startDate, endDate) {
+    const start = new Date(startDate);
+    start.setHours(0,0,0,0);
+
+    const end = new Date(endDate);
+    end.setHours(0,0,0,0);
+    
+    if(!startDate.trim() || start > end) {
+        addValidationError("start-date-row", "Start date is invalid.");
+        return false;
+    }
+
+    return true;
+}
+
 function validateEndDate(startDate, endDate) {
     const start = new Date(startDate);
     start.setHours(0,0,0,0);
