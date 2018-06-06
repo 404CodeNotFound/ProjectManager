@@ -22,37 +22,21 @@
                                         <div class="row uniform">
                                             <div class="12u 12u$(xsmall)">
                                                 <input type="text" name="name" id="name" placeholder="Sprint name" required />
-                                                <div class="error">
-                                                    <?php if(isset($_GET['name']) && $_GET['name'] === 'false'):?>
-                                                        Sprint name is required.
-                                                    <?php endif?>
-                                                </div>
+                                                <div class="error" id="name-row"></div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
                                                 <label for="start-date" class="calendar-label">Start date</label>
                                                 <input type="date" name="start_date" id="start-date" required />
-                                                <div class="error">
-                                                    <?php if(isset($_GET['start_date']) && $_GET['start_date'] === 'false'):?>
-                                                        Start date is required and could not be in the past.
-                                                    <?php endif?>
-                                                </div>
+                                                <div class="error" id="start-date-row"></div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
                                                 <label for="end-date" class="calendar-label">End date</label>
                                                 <input type="date" name="end_date" id="end-date" required />
-                                                <div class="error">
-                                                    <?php if(isset($_GET['end_date']) && $_GET['end_date'] === 'false'):?>
-                                                        End date is required and could not be before start date.
-                                                    <?php endif?>
-                                                </div>
+                                                <div class="error" id="end-date-row"></div>
                                             </div>
                                             <div class="12u$">
                                                 <textarea name="goal" id="goal" placeholder="Enter sprint goal..." rows="6"></textarea>
-                                                <div class="error">
-                                                    <?php if(isset($_GET['goal']) && $_GET['goal'] === 'false'):?>
-                                                        Goal is required.
-                                                    <?php endif?>
-                                                </div>
+                                                <div class="error" id="goal-row"></div>
                                             </div>
                                             
                                             <div class="12u$">
@@ -102,6 +86,8 @@
             <script src="../assets/js/skel.min.js"></script>
             <script src="../assets/js/util.js"></script>
             <script src="../assets/js/main.js"></script>
+            <script src="../assets/js/validation-helpers.js"></script>            
+            <script src="../assets/js/sprint-validation.js"></script>            
             <script src="../assets/js/add-sprint.js"></script>
     </body>
 </html>

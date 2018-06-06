@@ -113,6 +113,7 @@
             <script src="../assets/js/main.js"></script>
             <script src="../assets/js/search-users.js"></script>
             <script src="../assets/js/add-member-to-new-project.js"></script>
+            <script src="../assets/js/validation-helpers.js"></script>
             <script src="../assets/js/project-validation.js"></script>
             <script src="../assets/js/add-project.js"></script>
     </body>

@@ -1,23 +1,45 @@
 const createButton = document.getElementById('create-sprint');
 
 createButton.onclick = function(event) {
-    const sprint = getFormData();
-    sendRequest(JSON.stringify(sprint));
+    removeValidationErrors();
+
+    try
+    {
+        let sprint = getFormData();
+        sendRequest(JSON.stringify(sprint));
+    }
+    catch (error)
+    {
+        return false;
+    }
 }
 
 function getFormData() {
-    var urlParams = new URLSearchParams(location.search);
-    var project_id = urlParams.get('project_id');
+    const urlParams = new URLSearchParams(location.search);
+    const project_id = urlParams.get('project_id');
+    const name = document.getElementById('name').value;
+    const start_date = document.getElementById('start-date').value;
+    const end_date = document.getElementById('end-date').value;
+    const goal = document.getElementById('goal').value;
 
-    let sprint = {
-        name: document.getElementById('name').value,
-        start_date: document.getElementById('start-date').value,
-        end_date: document.getElementById('end-date').value,
-        goal: document.getElementById('goal').value,
-        project_id: project_id
-    };
+    const isNameValid = validateName(name);
+    const isStartDateValid = validateStartDate(start_date, end_date);
+    const isEndDateValid = validateEndDate(start_date, end_date);
+    const isGoalValid = validateGoal(goal);
 
-    return sprint;
+    if(isNameValid && isStartDateValid && isEndDateValid && isGoalValid) {
+        let sprint = {
+            name: name,
+            start_date: start_date,
+            end_date: end_date,
+            goal: goal,
+            project_id: project_id
+        };
+
+        return sprint;
+    } else {
+        throw new Error();
+    }
 }
 
 var sendRequest = function(sprint) {
@@ -29,13 +51,15 @@ var sendRequest = function(sprint) {
         let response = request.response;
         let sprintObject = JSON.parse(sprint);
 
-        try {
-            let error = JSON.parse(response);
-            if(error.hasOwnProperty('message')) {
-                window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${error.message}&status_code=${error.status_code}`);
+        if(response) {
+            try {
+                let error = JSON.parse(response);
+                if(error.hasOwnProperty('message')) {
+                    window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${error.message}&status_code=${error.status_code}`);
+                }
+            } catch (e) {
+                window.location.replace('http://localhost/ProjectManager/src/controllers/GetProject.php?project_id=' + sprintObject.project_id);
             }
-        } catch (e) {
-            window.location.replace('http://localhost/ProjectManager/src/controllers/GetProject.php?project_id=' + sprintObject.project_id);
         }
     }
 

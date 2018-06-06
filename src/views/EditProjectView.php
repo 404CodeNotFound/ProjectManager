@@ -108,6 +108,7 @@
             <script src="../assets/js/skel.min.js"></script>
             <script src="../assets/js/util.js"></script>
             <script src="../assets/js/main.js"></script>
+            <script src="../assets/js/validation-helpers.js"></script>            
             <script src="../assets/js/project-validation.js"></script>
             <script src="../assets/js/edit-project.js"></script>
 

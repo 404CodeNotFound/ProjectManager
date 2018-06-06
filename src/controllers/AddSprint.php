@@ -1,14 +1,15 @@
 <?php
 require_once "../libs/Startup.php";
 Startup::_init(true);
+use helpers\Validator;
 use models\Sprint;
 use models\Error;
 
 session_start();
 if(!isset($_SESSION['current_user_id']))
 {
-    http_response_code(401);
-    header('Location: ../views/HomePageView.php');
+    $error = new Error("Only authorized users can create new project.", 401);
+    echo json_encode($error);
 }
 else
 {
@@ -22,6 +23,7 @@ else
     $project = $data['project_id'];
 
     $sprint = Sprint::create($name, $start_date, $end_date, $goal, $project);
+    
     try {
         $isSuccessful = $sprint->insert();
         return $isSuccessful;
