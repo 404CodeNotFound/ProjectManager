@@ -29,8 +29,13 @@ var sendRequest = function(sprint) {
         let response = request.response;
         let sprintObject = JSON.parse(sprint);
 
-        if(response) {
-            window.location.replace('http://localhost:8080/ProjectManager/src/controllers/GetProject.php?project_id=' + sprintObject.project_id);
+        try {
+            let error = JSON.parse(response);
+            if(error.hasOwnProperty('message')) {
+                window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${error.message}&status_code=${error.status_code}`);
+            }
+        } catch (e) {
+            window.location.replace('http://localhost/ProjectManager/src/controllers/GetProject.php?project_id=' + sprintObject.project_id);
         }
     }
 

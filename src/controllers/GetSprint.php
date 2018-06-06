@@ -11,7 +11,7 @@ session_start();
 if(!isset($_SESSION['current_user_id']))
 {
     http_response_code(401);
-    header('Location: ../views/HomePageView.php');
+    header('Location: ../views/Error.php?message=Only authenticated users can view sprint details.&status_code=401');
 }
 else
 {
@@ -40,8 +40,8 @@ else
     }
     else
     {
-        $error = new Error("You cannot view this sprint. You are not part of the project team.");
-        echo json_encode($error);
+        http_response_code(403);
+        header('Location: ../views/Error.php?message=Only participants of project can view this sprint.&status_code=403');
     }
 }
 ?>

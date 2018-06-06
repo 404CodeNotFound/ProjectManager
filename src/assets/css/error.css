@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
+
+.error-container {
+  text-align: center;
+  font-size: 180px;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 800;
+  margin: 20px 15px;
+}
+
+.error-container > span {
+  display: inline-block;
+  line-height: 0.7;
+  position: relative;
+  color: #FFB485;
+}
+
+.error-container > span {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.error-container > span:nth-of-type(1) {
+  color: #D1F2A5;
+  animation: colordancing 4s infinite;
+}
+
+@keyframes colordancing {
+    0% {
+      color: #D1F2A5;
+    }
+    25% {
+      color: #F56991;
+    }
+    50% {
+      color: #FFC48C;
+    }
+    75% {
+      color: #EFFAB4;
+    }
+    100% {
+      color: #D1F2A5;
+    }
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+html, button {
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+h1 {
+    color: #f56a6a;
+    text-align: center;
+    margin: 3% 15px;
+    font-size: 46pt;
+}
+
+.link-container {
+    text-align: center;
+}
+
+button.back-link {
+    text-transform: uppercase;
+    font-size: 14pt;
+    background-color: #f56a6a;
+    padding: 10px 15px;
+    border-radius: 0;
+    color: white;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-decoration: none;
+    margin-top: 50px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}

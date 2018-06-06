@@ -10,7 +10,7 @@ session_start();
 if(!isset($_SESSION['current_user_id']))
 {
     http_response_code(401);
- 	header('Location: ../views/HomePageView.php');
+ 	header('Location: ../views/Error.php?message=Only authenticated users can edit projects.&status_code=401');
 }
 else
 {
@@ -22,13 +22,13 @@ else
 
     if(!$project->getTitle())
     {
-    	$error = new Error("Error! Project was not found.");
-        echo json_encode($error);
+        http_response_code(404);
+        header('Location: ../views/Error.php?message=Project was not found.&status_code=404');
     }
     else if($project->getOwner() !== $current_user)
     {
-        $error = new Error("Only the owner of project can edit it.");
-        echo json_encode($error);
+        http_response_code(403);
+        header('Location: ../views/Error.php?message=Only the owner of project can edit it.&status_code=403');
     }
     else
     {
