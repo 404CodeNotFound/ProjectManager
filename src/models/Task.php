@@ -187,6 +187,24 @@ class Task
         return $task;
     }
 
+    public static function getAllSprintTasks($sprint_id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT id, title, status FROM tasks WHERE sprint_id = '$sprint_id'");
+        $query->execute();
+
+        $tasks = [];
+        while ($found_task = $query->fetch())
+        {
+            $task = new Task();
+            $task->setTitle($found_task["title"]);
+            $task->setId($found_task["id"]);
+            $task->setStatus($found_task["status"]);            
+            $tasks[] = $task;
+        }
+
+        return $tasks;
+    }
+
     // public static function edit($task_id, $title, $description, $priority, $story_points, $status, $assigned_to)
     // {
     //     $query = (new Db())->getConn()->prepare("UPDATE tasks SET title=?, description=?, priority=?, story_points=?, assigned_to=?, status=? WHERE id=?");

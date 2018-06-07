@@ -50,16 +50,65 @@
                                         <a href="../controllers/GetAddTask.php?sprint_id=<?=$sprint_id?>" class="button special">New</a>
                                     </h4>
                                     
-                                    <ul id="tasks-list">
-                                        To-do/In progress/Done
-                                        <?php
-                                        foreach($tasks as $task)
-                                        {
-                                            echo '<li><a href="./GetTask.php?id='.$task->getId().'">'.$task->getName().'</a></li>';                                  
-                                        }
-                                        ?>
-                                    </ul>
                                 </div>
+                                <table>
+                                    <tr>
+                                        <td>To-do</td>
+                                        <td>In progress</td>
+                                        <td>Done</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            if(count($to_do_tasks) > 0)
+                                            {
+                                                foreach($to_do_tasks as $task)
+                                                {
+                                                    echo '<li><a href="./GetTask.php?id='.$task->getId().'">'.$task->getTitle().'</a></li>';
+                                                }
+                                            }
+                                            else
+                                            {
+                                                echo '<div>No tasks with to-do yet.</div>';
+                                            }
+                                            
+                                            ?>
+                                        </td>
+
+                                        <td>
+                                            <?php
+                                            if(count($in_progress_tasks) > 0)
+                                            {
+                                                foreach($in_progress_tasks as $task)
+                                                {
+                                                    echo '<li><a href="./GetTask.php?id='.$task->getId().'">'.$task->getTitle().'</a></li>';                                  
+                                                }
+                                            }
+                                            else
+                                            {
+                                                echo '<div>No tasks with in progress yet.</div>';
+                                            }
+                                            ?>
+                                        </td>
+
+                                        <td>
+                                            <?php
+                                            if(count($done_tasks) > 0)
+                                            {
+                                                foreach($done_tasks as $task)
+                                                {
+                                                    echo '<li><a href="./GetTask.php?id='.$task->getId().'">'.$task->getTitle().'</a></li>';                                  
+                                                }
+                                            }
+                                            else
+                                            {
+                                                echo '<div>No tasks completed yet.</div>';
+                                            }
+                                            
+                                            ?>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <div>
