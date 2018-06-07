@@ -93,7 +93,7 @@
                                 <li><a href="generic.html">Dashboard</a></li>
                                 <li><a href="./GetAllProjects.php">Projects</a></li>
                                 <li>
-                                    <span class="opener">Sprints</span>
+                                    <span class="opener" id="subnav-opener">Sprints</span>
                                     <ul>
                                         <?php
                                         foreach($user_active_sprints as $sprint)

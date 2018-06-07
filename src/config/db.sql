@@ -6,7 +6,7 @@ CREATE TABLE users (
   username VARCHAR(50),
   full_name VARCHAR(128),
   email VARCHAR(50),
-  password VARCHAR(128),
+  password VARCHAR(128)
 );
 
 CREATE TABLE projects (
@@ -32,6 +32,7 @@ CREATE TABLE sprints (
   project_id INT NOT NULL,
   start_date DATE,
   end_date DATE,
+  goal VARCHAR(1000),
   FOREIGN KEY (project_id) REFERENCES projects(id)
 );
 
