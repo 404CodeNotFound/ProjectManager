@@ -223,6 +223,13 @@ class Task
         
         return $query->execute([$title, $description, $priority, $story_points, $task_id]);
     }
+
+    public static function delete($task_id)
+    {
+        $query = (new Db())->getConn()->prepare("DELETE FROM tasks WHERE id=?");
+        
+        return $query->execute([$task_id]);
+    }
   }
 
   function console_log( $data ){

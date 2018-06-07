@@ -31,11 +31,15 @@
                                 <?php
                                 if($task->getAssignedTo())
                                 {
-                                    echo '<span class="param"> Asignee: </span> <span class="info"><?=$task->getAssignedTo()?></span>';
+                                    echo '<span class="param"> Asignee: </span> <span class="info"><?=$task->getAssignedTo()?>
+                                            <button id="edit-assignee"><i class="icon fa-pencil"></i></button>
+                                          </span>';
                                 }
                                 else
                                 {
-                                    echo '<span class="param"> <i class="icon fa-user"></i> Asignee: </span> <span class="info">Unknown </span>';
+                                    echo '<span class="param"> <i class="icon fa-user"></i> Asignee: </span> <span class="info">Unknown 
+                                            <button id="edit-assignee"><i class="icon fa-pencil"></i></button>
+                                          </span>';
                                 }
                                 ?>
                             </p>
@@ -43,7 +47,9 @@
                                 <span class="param"> <i class="icon fa-flag"></i> Priority:</span> <span class="info"><?=$task->getPriority()?> </span>
                             </p>
                             <p>
-                                <span class="param">Status:</span> <span class="info"><?=$task->getStatus()?></span>
+                                <span class="param">Status:</span> <span class="info"><?=$task->getStatus()?>
+                                    <button id="edit-status"><i class="icon fa-pencil"></i></button>
+                                </span>
                             </p>
                             <p>
                                 <span class="param">Story points:</span> <span class="info"><?=$task->getStoryPoints()?></span>
@@ -60,7 +66,7 @@
                             <?php 
                                 if($isPojectParticipant)
                                 {
-                                    echo '<a href="./GetEditTask.php?id='.$task_id.'" class="button default">Delete</a>';
+                                    echo '<a href="./DeleteTask.php?id='.$task_id.'" class="button default">Delete</a>';
                                     echo '<a href="./GetEditTask.php?id='.$task_id.'" class="button special">Edit</a>';
                                 }
                             ?>

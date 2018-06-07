@@ -18,7 +18,6 @@ else
 	$story_points = $_POST['story-points'];
     $task_id = $_GET['id'];
 
-
     try {
         Task::edit($task_id, $title, $description, $priority, $story_points);
         

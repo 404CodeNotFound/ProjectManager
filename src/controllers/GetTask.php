@@ -40,7 +40,6 @@ else
     }
     else
     {
-        require_once('../views/TaskDetailsView.php');
         http_response_code(403);
         header('Location: ../views/Error.php?message=Only participants of project can view this task.&status_code=403');
     }
