@@ -41,7 +41,7 @@ CREATE TABLE tasks (
   status VARCHAR(50),
   title VARCHAR(200),
   description VARCHAR(500),
-  priority INT,
+  priority VARCHAR(10),
   story_points INT,
   sprint_id INT,
   assigned_to INT,

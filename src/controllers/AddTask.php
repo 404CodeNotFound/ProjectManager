@@ -25,6 +25,7 @@ else
     
     try {
         $isSuccessful = $task->insert();
+
         echo $isSuccessful;
     } catch (Exception $ex) {
         $e = new Error("Server error.", 500);

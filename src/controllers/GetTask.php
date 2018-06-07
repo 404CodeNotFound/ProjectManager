@@ -45,10 +45,4 @@ else
         header('Location: ../views/Error.php?message=Only participants of project can view this task.&status_code=403');
     }
 }
-
-function console_log( $data ){
-    echo '<script>';
-    echo 'console.log('. json_encode( $data ) .')';
-    echo '</script>';
-  }
 ?>
