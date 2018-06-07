@@ -47,16 +47,12 @@ function sendForm(project) {
 
     request.onload = function(e) {
         let response = request.response;
-        console.log(response);
-        if(response) {
-            try {
-                let error = JSON.parse(response);
-                if(error.hasOwnProperty('message') ) {
-                    window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${error.message}&status_code=${error.status_code}`);
-                } 
-            } catch (e) {
-                window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php');
-            }
+        const parsedResponse =  JSON.parse(response);
+
+        if(typeof(parsedResponse) === 'number') {            
+            window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php');               
+        } else {
+            window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
         }
     }
 

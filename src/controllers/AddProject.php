@@ -41,8 +41,10 @@ else
 
         foreach ($participants as $participant_id) {
             $link = ProjectParticipant::create($project_id, $participant_id);
-            $link->insert();
+            $isSuccessful = $link->insert();
         }
+
+        echo $isSuccessful;
         
     } catch (Exception $ex) {
         $error = new Error("Server error.", 500);

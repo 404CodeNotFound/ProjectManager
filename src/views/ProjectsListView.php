@@ -35,48 +35,40 @@
                     </section>
                 </div>
             </div>
-
             <div id="sidebar">
                 <div class="inner">
-                        <section id="search" class="alt">
-                            <h2>Project Manager</h2>
-                        </section>
-
-                        <nav id="menu">
-                            <header class="major">
-                                <h2>Menu</h2>
-                            </header>
-                            <ul>
-                                <li><a href="../views/HomePageLoggedView.php">Homepage</a></li>
-                                <li><a href="generic.html">Dashboard</a></li>
-                                <li><a href="./GetAllProjects.php">Projects</a></li>
-                                <li>
-                                    <span class="opener">Sprints</span>
-                                    <ul>
-                                        <?php
+                    <section id="search" class="alt">
+                        <h2>Project Manager</h2>
+                    </section>
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="../views/HomePageLoggedView.php">Homepage</a></li>
+                            <li><a href="generic.html">Dashboard</a></li>
+                            <li><a href="./GetAllProjects.php">Projects</a></li>
+                            <li>
+                                <span class="opener">Sprints</span>
+                                <ul>
+                                    <?php
                                         foreach($user_active_sprints as $sprint)
                                         {
                                             echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
                                         }
-                                        ?>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-
-                        <footer id="footer">
-                            <p class="copyright">&copy; Project Manager. All rights reserved.</p>
-                        </footer>
-
+                                    ?>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <footer id="footer">
+                        <p class="copyright">&copy; Project Manager. All rights reserved.</p>
+                    </footer>
                 </div>
+                <a class="toggle" href="#sidebar" id="navigation-toggler">Toggle</a>                
             </div>
-
         </div>
 
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/skel.min.js"></script>
-        <script src="../assets/js/util.js"></script>
-        <script src="../assets/js/main.js"></script>
-
+        <script src="../assets/js/navigation.js"></script>
 	</body>
 </html>

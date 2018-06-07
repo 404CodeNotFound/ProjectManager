@@ -10,59 +10,57 @@
             <div id="wrapper">
                 <div id="main">
                     <div class="inner">
-                            <header id="header">
-                                <h1 class="logo">Create Project</h1>
-                                <ul class="icons">
-                                    <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
-                                </ul>
-                            </header>
-
-                            <section id="banner">
-                                <div class="content">
-                                        <div class="row uniform">
-                                            <div class="12u 12u$(xsmall)">
-                                                <input type="text" name="title" id="title" placeholder="Title" required />
-                                                <div class="error" id="title-row">
-                                                </div>
-                                            </div>
-                                            <div class="6u 12u$(xsmall)">
-                                                <label for="start-date" class="calendar-label">From</label>
-                                                <input type="date" name="start_date" id="start-date" required />
-                                                <div class="error" id="start-date-row">
-                                                </div>
-                                            </div>
-                                            <div class="6u 12u$(xsmall)">
-                                                <label for="end-date" class="calendar-label">To</label>
-                                                <input type="date" name="end_date" id="end-date" required />
-                                                <div class="error" id="end-date-row">
-                                                </div>
-                                            </div>
-                                            <div class="12u$">
-                                                <textarea name="overview" id="overview" placeholder="Enter project overview..." rows="6"></textarea>
-                                                <div class="error" id="overview-row">
-                                                </div>
-                                            </div>
-                                            <div class="6u 12u$(xsmall)">
-                                                <input type="text" name="participant" id="participant" placeholder="Search user by username..." />
-                                                <div id="user-results"></div>
-                                            </div>
-                                            <div class="6u 12u$(xsmall)">
-                                                <h3>Selected participants:</h3>
-                                                <ul id="selected-users">
-
-                                                </ul>
-                                            </div>
-                                            <div class="12u$">
-                                                <ul class="actions">
-                                                    <li><input type="submit" value="Create" class="special" id="create-project"/></li>
-                                                </ul>
-                                            </div>
+                        <header id="header">
+                            <h1 class="logo">Create Project</h1>
+                            <ul class="icons">
+                                <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
+                            </ul>
+                        </header>
+                        <section id="banner">
+                            <div class="content">
+                                <div class="row uniform">
+                                    <div class="12u 12u$(xsmall)">
+                                        <input type="text" name="title" id="title" placeholder="Title" required />
+                                        <div class="error" id="title-row">
                                         </div>
+                                    </div>
+                                    <div class="6u 12u$(xsmall)">
+                                        <label for="start-date" class="calendar-label">From</label>
+                                        <input type="date" name="start_date" id="start-date" required />
+                                        <div class="error" id="start-date-row">
+                                        </div>
+                                    </div>
+                                    <div class="6u 12u$(xsmall)">
+                                        <label for="end-date" class="calendar-label">To</label>
+                                        <input type="date" name="end_date" id="end-date" required />
+                                        <div class="error" id="end-date-row">
+                                        </div>
+                                    </div>
+                                    <div class="12u$">
+                                        <textarea name="overview" id="overview" placeholder="Enter project overview..." rows="6"></textarea>
+                                        <div class="error" id="overview-row">
+                                        </div>
+                                    </div>
+                                    <div class="6u 12u$(xsmall)">
+                                        <input type="text" name="participant" id="participant" placeholder="Search user by username..." />
+                                        <div id="user-results"></div>
+                                    </div>
+                                    <div class="6u 12u$(xsmall)">
+                                        <h3>Selected participants:</h3>
+                                        <ul id="selected-users">
+
+                                        </ul>
+                                    </div>
+                                    <div class="12u$">
+                                        <ul class="actions">
+                                            <li><input type="submit" value="Create" class="special" id="create-project"/></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </section>
+                            </div>
+                        </section>
                     </div>
                 </div>
-
                 <div id="sidebar">
                     <div class="inner">
                         <section id="search" class="alt">
@@ -89,16 +87,11 @@
                         <footer id="footer">
                             <p class="copyright">&copy; Project Manager. All rights reserved.</p>
                         </footer>
-
                     </div>
+                    <a class="toggle" href="#sidebar" id="navigation-toggler">Toggle</a>                    
                 </div>
-
             </div>
-
-            <script src="../assets/js/jquery.min.js"></script>
-            <script src="../assets/js/skel.min.js"></script>
-            <script src="../assets/js/util.js"></script>
-            <script src="../assets/js/main.js"></script>
+            <script src="../assets/js/navigation.js"></script>
             <script src="../assets/js/search-users.js"></script>
             <script src="../assets/js/add-member-to-new-project.js"></script>
             <script src="../assets/js/validation-helpers.js"></script>
