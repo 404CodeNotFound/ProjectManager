@@ -9,16 +9,11 @@
 	<body>
 		<h1><?=$_GET['message']?></h1>
 		<section class="error-container">
-		  <span><?=$_GET['status_code']?></span>
+			<span><?=$_GET['status_code']?></span>
 		</section>
 		<div class="link-container">
-		  <button id="go-back" class="back-link">Go Back</button>
+			<button id="go-back" class="back-link">Go Back</button>
 		</div>
-
-		<script src="../assets/js/jquery.min.js"></script>
-		<script src="../assets/js/skel.min.js"></script>
-		<script src="../assets/js/util.js"></script>
-		<script src="../assets/js/main.js"></script>
 		<script src="../assets/js/error.js"></script>
 	</body>
 </html>
