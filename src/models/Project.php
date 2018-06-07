@@ -158,6 +158,19 @@ class Project
         return $project;
     }
 
+    public static function getProjectTitleByProjectId($id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT p.title FROM projects p WHERE p.id = '$id'");
+        $query->execute();
+
+        while ($found_project = $query->fetch())
+        {
+            $title = $found_project['title'];
+        }
+
+        return $title;
+    }
+
     public static function edit($id, $title, $start_date, $end_date, $overview)
     {
         $query = (new Db())->getConn()->prepare("UPDATE projects SET title=?, start_date=?, end_date=?, overview=? WHERE id=?");

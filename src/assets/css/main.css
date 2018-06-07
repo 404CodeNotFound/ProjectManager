@@ -3924,21 +3924,35 @@
 		width: 50%;
 	}
 
-	#project-details h1 {
+	#project-details h1, #task-details h1 {
 		font-size: 2.25rem;
 		color: #f56a6a;
+	}
+
+	#task-details h1 {
+		text-decoration: underline;
 	}
 
 	#project-details span.info {
 		color: #f56a6a;		
 	}
 
-	#project-details span.param, #sprint-details span.param {
+	#project-details span.param, #sprint-details span.param, #task-details span.param {
 		font-size: 1em;
 		color: #3d4449;
 		font-family: "Roboto Slab", serif;
 		font-weight: 700;
 	}
+
+	#task-buttons a.default {
+		margin-bottom: 2%;
+	}
+
+	#task-buttons a.special {
+		padding-left: 3.1em;
+		padding-right: 3.1em;
+	}
+
 	.banner h1 {
 		margin-top: -0.125em;
 	}

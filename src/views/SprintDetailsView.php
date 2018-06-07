@@ -69,7 +69,7 @@
                                             }
                                             else
                                             {
-                                                echo '<div>No tasks with to-do yet.</div>';
+                                                echo '<div>No tasks to-do yet.</div>';
                                             }
                                             
                                             ?>
@@ -86,7 +86,7 @@
                                             }
                                             else
                                             {
-                                                echo '<div>No tasks with in progress yet.</div>';
+                                                echo '<div>No tasks in progress yet.</div>';
                                             }
                                             ?>
                                         </td>
@@ -102,7 +102,7 @@
                                             }
                                             else
                                             {
-                                                echo '<div>No tasks completed yet.</div>';
+                                                echo '<div>No tasks done yet.</div>';
                                             }
                                             
                                             ?>

@@ -12,8 +12,9 @@ class Task
     private $priority;
     private $story_points;
     private $sprint_id;
-    private $assined_to;
-    private $assined_to_username;    
+    private $project_id;
+    private $assigned_to;
+    private $assigned_to_username;
     private $status;
 
     public function __construct() {
@@ -118,6 +119,16 @@ class Task
         return $this->sprint_name;
     }
 
+    public function setProject($project_id)
+    {
+        $this->project_id = $project_id;
+    }
+
+    public function getProject()
+    {
+        return $this->project_id;
+    }
+
     public function setAssignedTo($assigned_to)
     {    
         $this->assigned_to = $assigned_to;
@@ -165,8 +176,8 @@ class Task
 
     public static function getTaskById($id)
     {
-        $query = (new Db())->getConn()->prepare("SELECT t.id, t.title, t.description, t.priority, t.story_points, t.sprint_id, s.name, u.id as user_id, u.username, t.status
-            FROM tasks t JOIN sprints s ON t.sprint_id = s.id JOIN users u ON t.assigned_to = u.id WHERE t.id = '$id'");
+        $query = (new Db())->getConn()->prepare("SELECT t.id, t.title, t.description, t.priority, t.story_points, t.sprint_id, s.name, s.project_id, u.id as user_id, u.username, t.status
+            FROM tasks t JOIN sprints s ON t.sprint_id = s.id LEFT JOIN users u ON t.assigned_to = u.id WHERE t.id = '$id'");
         $query->execute();
 
         $task = new Task();
@@ -179,6 +190,7 @@ class Task
             $task->setStoryPoints($taskData['story_points']);
             $task->setSprint($taskData['sprint_id']);
             $task->setSprintName($taskData['name']);
+            $task->setProject($taskData['project_id']);
             $task->setAssignedTo($taskData['user_id']);
             $task->setAssignedToUsername($taskData['username']);
             $task->setStatus($taskData['status']);            
