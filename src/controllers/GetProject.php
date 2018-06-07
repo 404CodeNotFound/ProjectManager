@@ -16,7 +16,7 @@ if(!isset($_SESSION['current_user_id']))
 else
 {
 	$current_user = $_SESSION['current_user_id'];
-    $user_active_sprints = User::getAllActiveSprints($current_user);
+	$user_active_sprints = User::getAllActiveSprints($current_user);
 	
 	$project_id = $_GET['project_id'];
 	$project = Project::getProjectById($project_id);

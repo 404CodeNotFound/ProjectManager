@@ -61,7 +61,7 @@
                             <div class="6u">
                                 <h4>
                                     <i class="icon fa-list"></i> Sprints:
-                                    <a href="../views/AddSprintView.php?project_id=<?=$project_id?>" class="button special">New</a>
+                                    <a href="../views/AddSprintView.php?project_id=<?=$project_id?>" class="button small special">New</a>
                                 </h4>
                                 <ul id="sprints-list">
                                     <?php
@@ -112,13 +112,13 @@
                             <li><a href="generic.html">Dashboard</a></li>
                             <li><a href="./GetAllProjects.php">Projects</a></li>
                             <li>
-                                <span class="opener">Sprints</span>
+                                <span class="opener" id="subnav-opener">Sprints</span>
                                 <ul>
                                     <?php
-                                    foreach($user_active_sprints as $sprint)
-                                    {
-                                        echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
-                                    }
+                                        foreach($user_active_sprints as $sprint)
+                                        {
+                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                        }
                                     ?>
                                 </ul>
                             </li>

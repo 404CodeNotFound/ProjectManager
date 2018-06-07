@@ -63,7 +63,7 @@
                             <li><a href="generic.html">Dashboard</a></li>
                             <li><a href="../controllers/GetAllProjects.php">Projects</a></li>
                             <li>
-                                <span class="opener">Sprints</span>
+                                <span class="opener" id="subnav-opener">Sprints</span>
                                 <ul>
                                     <li><a href="#">Active Sprint</a></li>
                                 </ul>
