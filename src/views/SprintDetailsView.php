@@ -47,7 +47,7 @@
                                 <div class="6u">
                                     <h4>
                                         <i class="icon fa-list"></i> Tasks:
-                                        <a href="../views/AddTaskView.php?project_id=<?=$project_id?>" class="button special">New</a>
+                                        <a href="../controllers/GetAddTask.php?sprint_id=<?=$sprint_id?>" class="button special">New</a>
                                     </h4>
                                     
                                     <ul id="tasks-list">

@@ -25,7 +25,7 @@ else
     
     try {
         $isSuccessful = $task->insert();
-        return $isSuccessful;
+        echo $isSuccessful;
     } catch (Exception $ex) {
         $e = new Error("Server error.", 500);
         echo json_encode($e);

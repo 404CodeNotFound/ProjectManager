@@ -88,16 +88,13 @@
                         <footer id="footer">
                             <p class="copyright">&copy; Project Manager. All rights reserved.</p>
                         </footer>
-
                     </div>
+                    <a class="toggle" href="#sidebar" id="navigation-toggler">Toggle</a>
                 </div>
 
             </div>
 
-            <script src="../assets/js/jquery.min.js"></script>
-            <script src="../assets/js/skel.min.js"></script>
-            <script src="../assets/js/util.js"></script>
-            <script src="../assets/js/main.js"></script>
+            <script src="../assets/js/navigation.js"></script>
             <script src="../assets/js/validation-helpers.js"></script>            
             <script src="../assets/js/task-validation.js"></script>            
             <script src="../assets/js/add-task.js"></script>

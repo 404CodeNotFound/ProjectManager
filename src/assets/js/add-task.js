@@ -45,17 +45,20 @@ function getFormData() {
 }
 
 var sendRequest = function(task) {
-    console.log(task);
     let request = new XMLHttpRequest();
     request.open("POST", `../controllers/AddTask.php`, true);
     request.setRequestHeader('Content-type', 'application/json');
 
     request.onload = function(e) {
         let response = request.response;
+        console.log(response);
         let taskObject = JSON.parse(task);
+        const parsedResponse =  JSON.parse(response);
 
-        if(response) {
-            console.log(response);
+        if(typeof(parsedResponse) === 'number') {            
+            window.location.replace('http://localhost/ProjectManager/src/controllers/GetSprint.php?id=' + taskObject.sprint_id);               
+        } else {
+            window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
         }
     }
 
