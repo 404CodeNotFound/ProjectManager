@@ -217,12 +217,12 @@ class Task
         return $tasks;
     }
 
-    // public static function edit($task_id, $title, $description, $priority, $story_points, $status, $assigned_to)
-    // {
-    //     $query = (new Db())->getConn()->prepare("UPDATE tasks SET title=?, description=?, priority=?, story_points=?, assigned_to=?, status=? WHERE id=?");
+    public static function edit($task_id, $title, $description, $priority, $story_points)
+    {
+        $query = (new Db())->getConn()->prepare("UPDATE tasks SET title=?, description=?, priority=?, story_points=? WHERE id=?");
         
-    //     return $query->execute([$title, $description, $priority, $story_points, $status, $assigned_to $task_id]);
-    // }
+        return $query->execute([$title, $description, $priority, $story_points, $task_id]);
+    }
   }
 
   function console_log( $data ){

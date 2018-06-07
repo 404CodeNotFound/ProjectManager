@@ -38,7 +38,6 @@
                                                     <option value="High">High</option>
                                                     <option value="Highest">Highest</option>
                                                 </select>
-                                                <div class="error" id="priority-row"></div>
                                             </div>
                                             <div class="6u 12u$(xsmall)">
                                                 <label for="story-points">Story points</label>
