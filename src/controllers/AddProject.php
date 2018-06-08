@@ -22,7 +22,17 @@ else
 	$start_date = $data['start_date'];
 	$end_date = $data['end_date'];
 	$overview = $data['overview'];
-	$participants = [$current_user];
+    $participants = [$current_user];
+    
+    $is_title_valid = Validator::exists($title);
+    $is_start_date_valid = Validator::exists($start_date);
+    $is_end_date_valid = Validator::exists($end_date);
+    $is_overview_valid = Validator::exists($overview);
+    
+    if(!($is_title_valid && $is_start_date_valid && $is_end_date_valid && $is_overview_valid)) 
+    {
+        header('Location: ../views/AddProjectView.php?title=' . json_encode($is_title_valid) . '&start_date=' . json_encode($is_start_date_valid) . '&end_date=' . json_encode($is_end_date_valid) . '&overview=' . json_encode($is_overview_valid));
+    }
 
 	foreach ($data['participants'] as $participant) {
 		foreach ($participant as $key => $value) {

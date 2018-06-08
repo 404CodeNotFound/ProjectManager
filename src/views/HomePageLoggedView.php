@@ -41,7 +41,7 @@
 							<h2>Menu</h2>
 						</header>
 						<ul>
-							<li><a href="./HomePageLoggedView.php">Homepage</a></li>
+							<li><a href="../controllers/GetHomePage.php">Homepage</a></li>
 							<li><a href="generic.html">Dashboard</a></li>
 							<li><a href="../controllers/GetAllProjects.php">Projects</a></li>
 							<li>
