@@ -224,6 +224,13 @@ class Task
         return $query->execute([$title, $description, $priority, $story_points, $task_id]);
     }
 
+    public static function setAssignee($task_id, $user_id)
+    {
+        $query = (new Db())->getConn()->prepare("UPDATE tasks SET assigned_to='$user_id' WHERE id='$task_id'");
+        
+        return $query->execute();
+    }
+
     public static function delete($task_id)
     {
         $query = (new Db())->getConn()->prepare("DELETE FROM tasks WHERE id=?");

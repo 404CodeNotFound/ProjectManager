@@ -25,19 +25,20 @@
                         <div class="content" id="task-details">
                             <header>
                                 <h4> <a href='./GetProject.php?project_id=<?php echo $task->getProject(); ?>' ><?=$project_title?></a> / <a href='./GetSprint.php?id=<?php echo $task->getSprint(); ?>' ><?=$task->getSprintName()?></a> </h4>
+                                <input type="hidden" id="project-id" name="project-id" value="<?=$task->getProject()?>" />
                                 <h1><?=$task->getTitle()?></h1>
                             </header>
                             <p>
                                 <?php
                                 if($task->getAssignedTo())
                                 {
-                                    echo '<span class="param"> Asignee: </span> <span class="info"><?=$task->getAssignedTo()?>
-                                            <button id="edit-assignee"><i class="icon fa-pencil"></i></button>
+                                    echo '<span id="assignee-param" class="param"> <i class="icon fa-user"></i> Asignee: </span> <span id="assignee-info" class="info">'.$task->getAssignedToUsername().
+                                            '<button id="edit-assignee"><i class="icon fa-pencil"></i></button>
                                           </span>';
                                 }
                                 else
                                 {
-                                    echo '<span class="param"> <i class="icon fa-user"></i> Asignee: </span> <span class="info">Unknown 
+                                    echo '<span id="assignee-param" class="param"> <i class="icon fa-user"></i> Asignee: </span> <span id="assignee-info" class="info" >Unknown 
                                             <button id="edit-assignee"><i class="icon fa-pencil"></i></button>
                                           </span>';
                                 }
@@ -112,5 +113,6 @@
 
         <script src="../assets/js/navigation.js"></script>
         <script src="../assets/js/show-alerts.js"></script>
+        <script src="../assets/js/edit-task-assignee.js"></script>        
 	</body>
 </html>
