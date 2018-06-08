@@ -31,7 +31,7 @@ else
     
     if(!($is_title_valid && $is_start_date_valid && $is_end_date_valid && $is_overview_valid)) 
     {
-        header('Location: ../views/AddProjectView.php?title=' . json_encode($is_title_valid) . '&start_date=' . json_encode($is_start_date_valid) . '&end_date=' . json_encode($is_end_date_valid) . '&overview=' . json_encode($is_overview_valid));
+        header('Location: ./controllers/GetAddProjectPage.php?title=' . json_encode($is_title_valid) . '&start_date=' . json_encode($is_start_date_valid) . '&end_date=' . json_encode($is_end_date_valid) . '&overview=' . json_encode($is_overview_valid));
     }
     else 
     {

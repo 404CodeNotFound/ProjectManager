@@ -5,7 +5,7 @@ Startup::_init(true);
 session_start();
 if(isset($_SESSION['current_user_id']))
 {
- 	header('Location: ../views/AddProjectView.php');
+ 	require_once('../views/AddProjectView.php');
 }
 else
 {
