@@ -30,7 +30,7 @@
                             
                         </div>
                         <div class="2u">
-                            <a class="button special" href="../views/AddProjectView.php">Create project</a>
+                            <a class="button special" href="../controllers/GetAddProjectPage.php">Create project</a>
                         </div>
                     </section>
                 </div>
@@ -45,7 +45,7 @@
                             <h2>Menu</h2>
                         </header>
                         <ul>
-                            <li><a href="../views/HomePageLoggedView.php">Homepage</a></li>
+                            <li><a href="../controllers/GetHomePage.php">Homepage</a></li>
                             <li><a href="generic.html">Dashboard</a></li>
                             <li><a href="./GetAllProjects.php">Projects</a></li>
                             <li>

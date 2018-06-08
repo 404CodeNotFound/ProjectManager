@@ -2,8 +2,7 @@ let selectedUsers = [];
 
 function searchUsers() {
     const searchUserInput = document.getElementById('participant');
-    searchUserInput.addEventListener('keyup', function(event) {
-        console.log('search');    
+    searchUserInput.addEventListener('keyup', function(event) {   
         let resultsDiv = document.getElementById('user-results');
         resultsDiv.innerText = '';
         const pattern = event.target.value;

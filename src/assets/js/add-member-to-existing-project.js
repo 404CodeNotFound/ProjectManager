@@ -1,7 +1,25 @@
 const addMemberBtn = document.getElementById('add-member-btn');
+let isSearchOpened = false;
+
 addMemberBtn.onclick = function (event) {
-    showSearchForm();
+    if(!isSearchOpened) {
+        isSearchOpened = true;
+        this.innerText = 'Close search';
+        showSearchForm();
+    } else {
+        isSearchOpened = false;
+        this.innerText = 'Add member';
+        hideSearchForm();
+    }
 }   
+
+function hideSearchForm() {
+    const newMemberDiv = document.getElementById('new-member');
+    const userResultsDiv = document.getElementById('user-results');
+    const searchForm = document.getElementById('participant');
+    newMemberDiv.removeChild(userResultsDiv);
+    newMemberDiv.removeChild(searchForm);
+}
 
 function showSearchForm() {
     const searchForm = document.createElement('input');
