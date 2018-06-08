@@ -30,7 +30,7 @@
                             
                         </div>
                         <div class="2u">
-                            <a class="button special" href="../views/AddProjectView.php">Create project</a>
+                            <a class="button special" href="../controllers/GetAddProjectPage.php">Create project</a>
                         </div>
                     </section>
                 </div>

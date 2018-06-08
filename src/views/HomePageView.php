@@ -46,8 +46,8 @@
 						</header>
 						<ul>
 							<li><a href="../controllers/GetHomePage.php">Homepage</a></li>
-							<li><a href="./LoginView.php">Login</a></li>
-							<li><a href="./RegisterView.php">Register</a></li>
+							<li><a href="../controllers/GetLoginPage.php">Login</a></li>
+							<li><a href="./controllers/GetRegisterPage.php">Register</a></li>
 						</ul>
 					</nav>
 
