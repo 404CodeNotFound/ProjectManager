@@ -89,7 +89,7 @@ function addParticipantSuggestion(participant) {
     participantsResult.appendChild(listItem);
 }
 
-function setAssignee($participant_id) {
+function setAssignee(participant_id) {
     const urlParams = new URLSearchParams(location.search);
     const task_id = urlParams.get('id');
 
@@ -108,5 +108,5 @@ function setAssignee($participant_id) {
         
     }
 
-    request.send($participant_id);
+    request.send(participant_id);
 }

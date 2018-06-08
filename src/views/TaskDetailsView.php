@@ -48,7 +48,7 @@
                                 <span class="param"> <i class="icon fa-flag"></i> Priority:</span> <span class="info"><?=$task->getPriority()?> </span>
                             </p>
                             <p>
-                                <span class="param">Status:</span> <span class="info"><?=$task->getStatus()?>
+                                <span id="status-param" class="param">Status:</span> <span id="status-info" class="info"><span><?=$task->getStatus()?></span>
                                     <button id="edit-status"><i class="icon fa-pencil"></i></button>
                                 </span>
                             </p>
@@ -113,6 +113,7 @@
 
         <script src="../assets/js/navigation.js"></script>
         <script src="../assets/js/show-alerts.js"></script>
-        <script src="../assets/js/edit-task-assignee.js"></script>        
+        <script src="../assets/js/edit-task-status.js"></script>                
+        <script src="../assets/js/edit-task-assignee.js"></script>
 	</body>
 </html>
