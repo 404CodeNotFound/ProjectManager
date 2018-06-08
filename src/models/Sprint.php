@@ -11,10 +11,11 @@ class Sprint
     private $goal;
     private $project_id;
     private $project_title;
+    private $tasks;
     private $is_active;
     
     public function __construct() {
-
+        $this->tasks = [];
     }
 
     public static function create($name, $start_date, $end_date, $goal, $project)
@@ -25,6 +26,7 @@ class Sprint
         $instance->setEndDate($end_date);
         $instance->setGoal($goal);
         $instance->setProject($project);
+        $instance->tasks = [];
         
         return $instance;
     }
@@ -97,6 +99,16 @@ class Sprint
     public function getProjectTitle()
     {    
 		return $this->project_title;
+    }
+
+    public function setTasks($tasks)
+    {
+        $this->tasks = $tasks;
+    }
+
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 
     public function getIsActive()

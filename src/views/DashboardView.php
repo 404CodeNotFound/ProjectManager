@@ -17,8 +17,37 @@
                         </ul>
                     </header>
                     <section class="banner">      
-                        <div class="content row">
-                            <div></div>
+                        <div class="content">
+                            <?php
+                                foreach ($user_active_sprints as $sprint)
+                                {
+                                    echo '<div class="active-sprint">';
+                                    echo '<div class="sprint-header row">';
+                                    echo '<span class="sprint-header-name">'.$sprint->getName().'</span>';
+                                    echo ' <span class="sprint-header-project">('.$sprint->getProjectTitle().')</span>';
+                                    echo '<div class="show-sprint-tasks"><i class="icon fa-arrow-down"></i></div>';                                    
+                                    echo '</div>';
+                                    echo '<div class="sprint-tasks" hidden=true>';
+                                        $sprint_tasks = $sprint->getTasks();
+                                        if($sprint_tasks) 
+                                        {
+                                            foreach ($sprint_tasks as $task)
+                                            {
+                                                echo '<div class="dashboard-task">';
+                                                echo '<a href="./GetTask.php?id='.$task->getId().'"><i class="icon fa-list"></i> '.$task->getTitle().'</a>';
+                                                echo '<span class="dashboard-task-status '.str_replace(" ", "-", $task->getStatus()).'">'.$task->getStatus().'</span>';
+                                                echo '</div>';
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo '<div>No tasks in this sprint yet.</div>';
+                                        }
+                                        
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            ?>
                         </div>
                     </section>
                 </div>
@@ -58,5 +87,6 @@
         </div>
 
         <script src="../assets/js/navigation.js"></script>
+        <script src="../assets/js/dashboard.js"></script>
 	</body>
 </html>
