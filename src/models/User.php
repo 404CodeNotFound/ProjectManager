@@ -97,6 +97,22 @@ class User implements \JsonSerializable
         return $user;
     }
 
+    public function getUserById($id)
+    {
+        $query = (new Db())->getConn()->prepare("SELECT id, username FROM users WHERE id = '$id'");
+        $query->execute();
+        
+        $user = new User();
+
+        while ($found_user = $query->fetch())
+        {
+            $user->setUsername($found_user['username']);
+            $user->setId($found_user['id']);
+        }
+
+        return $user;
+    }
+
     public function getUserByUsername($username)
     {
         $query = (new Db())->getConn()->prepare("SELECT * FROM users WHERE username = '$username'");

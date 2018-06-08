@@ -47,7 +47,12 @@
                                 <div class="6u">
                                     <h4>
                                         <i class="icon fa-list"></i> Tasks:
-                                        <a href="../controllers/GetAddTask.php?sprint_id=<?=$sprint_id?>" class="button special">New</a>
+                                        <?php
+                                        if($sprint->getIsActive())
+                                        {
+                                            echo '<a href="../controllers/GetAddTask.php?sprint_id=<?=$sprint_id?>" class="button special">New</a>';
+                                        }
+                                        ?>
                                     </h4>
                                     
                                 </div>

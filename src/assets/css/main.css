@@ -3953,10 +3953,22 @@
 		padding-right: 3.1em;
 	}
 
-	#edit-assignee, #edit-status {
+	#edit-assignee, #edit-status, #edit-assignee-close, #edit-status-close {
 		border-radius: 3em;
 		padding-left: 1.3em;
 		padding-right: 1.3em;
+	}
+
+	#edit-assignee-close, #edit-status-close {
+		float: right;
+	}
+	
+	.participant {
+		list-style-type: none;
+	}
+
+	.participant:hover {
+		color: #f67878;
 	}
 
 	.banner h1 {

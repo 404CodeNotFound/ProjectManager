@@ -78,6 +78,23 @@ class ProjectParticipant
         return $user;
     }
 
+    public function getParticipantsByUsernamePattern($project_id, $pattern) {
+        $query = (new Db())->getConn()->prepare("SELECT u.id, u.username FROM users u JOIN project_participants p ON u.id = p.user_id
+            WHERE p.project_id = '$project_id' AND u.username LIKE '$pattern%'");
+        $query->execute();
+        
+        $found_participants = [];
+        while ($participant = $query->fetch())
+        {
+            $user = new User();
+            $user->setUsername($participant['username']);
+            $user->setId($participant['id']);
+            $found_participants[] = $user;
+        }
+
+        return $found_participants;
+    }
+
     public static function removeMember($project_id, $user_id) 
     {
         $query = (new Db())->getConn()->prepare("DELETE FROM `project_participants` WHERE project_id='$project_id' AND user_id='$user_id'");
