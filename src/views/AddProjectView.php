@@ -83,7 +83,7 @@
                             </header>
                             <ul>
                                 <li><a href="../controllers/GetHomePage.php">Homepage</a></li>
-                                <li><a href="generic.html">Dashboard</a></li>
+                                <li><a href="../controllers/GetDashboard.php">Dashboard</a></li>
                                 <li><a href="../controllers/GetAllProjects.php">Projects</a></li>
                                 <li>
                                     <span class="opener" id="subnav-opener">Sprints</span>
