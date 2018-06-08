@@ -61,7 +61,7 @@
                             <div class="6u">
                                 <h4>
                                     <i class="icon fa-list"></i> Sprints:
-                                    <a href="../views/AddSprintView.php?project_id=<?=$project_id?>" class="button small special">New</a>
+                                    <a href="../controllers/GetAddSprint.php?project_id=<?=$project_id?>" class="button small special">New</a>
                                 </h4>
                                 <ul id="sprints-list">
                                     <?php

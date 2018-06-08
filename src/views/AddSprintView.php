@@ -65,7 +65,12 @@
                             <li>
                                 <span class="opener" id="subnav-opener">Sprints</span>
                                 <ul>
-                                    <li><a href="#">Active Sprint</a></li>
+                                    <?php
+                                    foreach($user_active_sprints as $sprint)
+                                    {
+                                        echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                    }
+                                    ?>
                                 </ul>
                             </li>
                         </ul>
