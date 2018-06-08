@@ -40,8 +40,10 @@ function searchParticipants() {
     const project_id = document.getElementById('project-id').value;
     
     assigneeInput.addEventListener('keyup', function(event) {
+        let participantsResult = document.getElementById('participants-result');
+        participantsResult.innerText = '';
+        currentParticipants.clear();
         const inputText = event.target.value;
-        console.log(inputText);
 
         if (inputText.trim()) {
             let request = new XMLHttpRequest();
