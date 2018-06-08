@@ -9,6 +9,6 @@ if(isset($_SESSION['current_user_id']))
 }
 else
 {
-    header('Location: ../views/RegisterView.php');
+    require_once('../views/RegisterView.php');
 }
 ?>
