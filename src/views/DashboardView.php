@@ -25,7 +25,7 @@
                                     echo '<div class="sprint-header row">';
                                     echo '<span class="sprint-header-name">'.$sprint->getName().'</span>';
                                     echo ' <span class="sprint-header-project">('.$sprint->getProjectTitle().')</span>';
-                                    echo '<div class="show-sprint-tasks"><i class="icon fa-arrow-down"></i></div>';                                    
+                                    echo '<div class="show-sprint-tasks">...</div>';                                    
                                     echo '</div>';
                                     echo '<div class="sprint-tasks" hidden=true>';
                                         $sprint_tasks = $sprint->getTasks();
