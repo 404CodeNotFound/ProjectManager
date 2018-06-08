@@ -50,7 +50,7 @@
                                         <?php
                                         if($sprint->getIsActive())
                                         {
-                                            echo '<a href="../controllers/GetAddTask.php?sprint_id=<?=$sprint_id?>" class="button special">New</a>';
+                                            echo '<a href="../controllers/GetAddTask.php?sprint_id='.$sprint_id.'" class="button special">New</a>';
                                         }
                                         ?>
                                     </h4>
