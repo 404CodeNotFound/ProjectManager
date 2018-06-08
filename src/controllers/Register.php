@@ -20,7 +20,8 @@ $is_full_name_valid = Validator::exists($full_name);
 if (!($is_username_valid && $is_password_valid && $is_repeated_password_valid && $is_email_valid && $is_full_name_valid)) {
     header('Location: ../views/RegisterView.php?username=' . json_encode($is_username_valid) . '&password=' . json_encode($is_password_valid) . '&repeated_password=' . json_encode($is_repeated_password_valid) . '&email=' . json_encode($is_email_valid) . '&full_name=' . json_encode($is_full_name_valid));
 } else {
-    $user = User::create($username, $password, $email, $full_name);
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    $user = User::create($username, $password_hash, $email, $full_name);
     try {
     	$user->insert();
     	header('Location: ../views/HomePageView.php');

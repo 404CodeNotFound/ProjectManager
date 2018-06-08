@@ -80,9 +80,9 @@ class User implements \JsonSerializable
         return $query->execute([$this->username, $this->password, $this->email, $this->full_name]);
     }
 
-    public function getUser($username, $password)
+    public function getUser($username)
     {
-        $query = (new Db())->getConn()->prepare("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $query = (new Db())->getConn()->prepare("SELECT * FROM users WHERE username = '$username'");
         $query->execute();
         
         $user = new User();
@@ -90,6 +90,7 @@ class User implements \JsonSerializable
         while ($foundUser = $query->fetch())
         {
             $user->setUsername($foundUser['username']);
+            $user->setPassword($foundUser['password']);
             $user->setId($foundUser['id']);
         }
         
