@@ -17,14 +17,21 @@
                         </ul>
                     </header>
                     <section class="banner">      
-                        <div class="content row">
+                        <div class="content">
                             
                             <ul class="alt 10u">
                                 <?php 
+                                if(count($projects) <= 0)
+                                {
+                                    echo '<li>You do not participate in any project.</li>';
+                                } 
+                                else 
+                                {
                                     foreach($projects as $project) 
                                     {
                                         echo "<li><a href='./GetProject.php?project_id=".$project->getId()."'>".$project->getTitle()."</a></li>";
                                     }
+                                }
                                 ?>
                             </ul>
                             
@@ -52,9 +59,16 @@
                                 <span class="opener" id="subnav-opener">Sprints</span>
                                 <ul>
                                     <?php
-                                        foreach($user_active_sprints as $sprint)
+                                        if(count($user_active_sprints) <= 0)
                                         {
-                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            echo '<li>You have no active sprints.</li>';
+                                        }
+                                        else 
+                                        {
+                                            foreach($user_active_sprints as $sprint)
+                                            {
+                                                echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            }
                                         }
                                     ?>
                                 </ul>

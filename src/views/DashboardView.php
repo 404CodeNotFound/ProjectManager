@@ -19,33 +19,40 @@
                     <section class="banner">      
                         <div class="content">
                             <?php
-                                foreach ($user_active_sprints as $sprint)
+                                if(count($user_active_sprints) <= 0)
                                 {
-                                    echo '<div class="active-sprint">';
-                                    echo '<div class="sprint-header row">';
-                                    echo '<span class="sprint-header-name">'.$sprint->getName().'</span>';
-                                    echo ' <span class="sprint-header-project">('.$sprint->getProjectTitle().')</span>';
-                                    echo '<div class="show-sprint-tasks">...</div>';                                    
-                                    echo '</div>';
-                                    echo '<div class="sprint-tasks" hidden=true>';
-                                        $sprint_tasks = $sprint->getTasks();
-                                        if($sprint_tasks) 
-                                        {
-                                            foreach ($sprint_tasks as $task)
+                                    echo 'You have no active tasks yet.';
+                                }
+                                else 
+                                {
+                                    foreach ($user_active_sprints as $sprint)
+                                    {
+                                        echo '<div class="active-sprint">';
+                                        echo '<div class="sprint-header row">';
+                                        echo '<span class="sprint-header-name">'.$sprint->getName().'</span>';
+                                        echo ' <span class="sprint-header-project">('.$sprint->getProjectTitle().')</span>';
+                                        echo '<div class="show-sprint-tasks">...</div>';                                    
+                                        echo '</div>';
+                                        echo '<div class="sprint-tasks" hidden=true>';
+                                            $sprint_tasks = $sprint->getTasks();
+                                            if($sprint_tasks) 
                                             {
-                                                echo '<div class="dashboard-task">';
-                                                echo '<a href="./GetTask.php?id='.$task->getId().'"><i class="icon fa-list"></i> '.$task->getTitle().'</a>';
-                                                echo '<span class="dashboard-task-status '.str_replace(" ", "-", $task->getStatus()).'">'.$task->getStatus().'</span>';
-                                                echo '</div>';
+                                                foreach ($sprint_tasks as $task)
+                                                {
+                                                    echo '<div class="dashboard-task">';
+                                                    echo '<a href="./GetTask.php?id='.$task->getId().'"><i class="icon fa-list"></i> '.$task->getTitle().'</a>';
+                                                    echo '<span class="dashboard-task-status '.str_replace(" ", "-", $task->getStatus()).'">'.$task->getStatus().'</span>';
+                                                    echo '</div>';
+                                                }
                                             }
-                                        }
-                                        else
-                                        {
-                                            echo '<div>No tasks in this sprint yet.</div>';
-                                        }
-                                        
-                                    echo '</div>';
-                                    echo '</div>';
+                                            else
+                                            {
+                                                echo '<div>No tasks in this sprint yet.</div>';
+                                            }
+                                            
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
                                 }
                             ?>
                         </div>
@@ -69,9 +76,16 @@
                                 <span class="opener" id="subnav-opener">Sprints</span>
                                 <ul>
                                     <?php
-                                        foreach($user_active_sprints as $sprint)
+                                        if(count($user_active_sprints) <= 0)
                                         {
-                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            echo '<li>You have no active sprints.</li>';
+                                        }
+                                        else 
+                                        {
+                                            foreach($user_active_sprints as $sprint)
+                                            {
+                                                echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            }
                                         }
                                     ?>
                                 </ul>

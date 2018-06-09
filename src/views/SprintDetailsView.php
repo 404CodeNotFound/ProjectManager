@@ -50,7 +50,7 @@
                                         <?php
                                         if($sprint->getIsActive())
                                         {
-                                            echo '<a href="../controllers/GetAddTask.php?sprint_id='.$sprint_id.'" class="button special">New</a>';
+                                            echo '<a href="../controllers/GetAddTask.php?sprint_id='.$sprint_id.'" class="button small special">New</a>';
                                         }
                                         ?>
                                     </h4>
@@ -150,10 +150,17 @@
                                     <span class="opener" id="subnav-opener">Sprints</span>
                                     <ul>
                                         <?php
-                                        foreach($user_active_sprints as $sprint)
-                                        {
-                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
-                                        }
+                                            if(count($user_active_sprints) <= 0)
+                                            {
+                                                echo '<li>You have no active sprints.</li>';
+                                            }
+                                            else 
+                                            {
+                                                foreach($user_active_sprints as $sprint)
+                                                {
+                                                    echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                                }
+                                            }
                                         ?>
                                     </ul>
                                 </li>

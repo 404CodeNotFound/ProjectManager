@@ -48,9 +48,16 @@
 								<span class="opener" id="subnav-opener">Sprints</span>
 								<ul>
 									<?php
-                                        foreach($user_active_sprints as $sprint)
+                                        if(count($user_active_sprints) <= 0)
                                         {
-                                            echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            echo '<li>You have no active sprints.</li>';
+                                        }
+                                        else 
+                                        {
+                                            foreach($user_active_sprints as $sprint)
+                                            {
+                                                echo '<li><a href="./GetSprint.php?id='.$sprint->getId().'">'.$sprint->getName().' ('.$sprint->getProjectTitle().')</a></li>';                                  
+                                            }
                                         }
                                     ?>
 								</ul>
