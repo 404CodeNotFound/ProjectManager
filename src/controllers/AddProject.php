@@ -7,13 +7,10 @@ use models\ProjectParticipant;
 use models\Error;
 
 session_start();
-if(!isset($_SESSION['current_user_id']))
-{
+if(!isset($_SESSION['current_user_id'])) {
     $error = new Error("Only authorized users can create new project.", 401);
     echo json_encode($error);
-}
-else
-{
+} else {
 	$current_user = $_SESSION['current_user_id'];
 	$json = file_get_contents('php://input');
     $data = json_decode($json, true);
@@ -29,16 +26,12 @@ else
     $is_end_date_valid = Validator::exists($end_date);
     $is_overview_valid = Validator::exists($overview);
     
-    if(!($is_title_valid && $is_start_date_valid && $is_end_date_valid && $is_overview_valid)) 
-    {
+    if(!($is_title_valid && $is_start_date_valid && $is_end_date_valid && $is_overview_valid)) {
         header('Location: ./controllers/GetAddProjectPage.php?title=' . json_encode($is_title_valid) . '&start_date=' . json_encode($is_start_date_valid) . '&end_date=' . json_encode($is_end_date_valid) . '&overview=' . json_encode($is_overview_valid));
-    }
-    else 
-    {
+    } else {
         foreach ($data['participants'] as $participant) {
             foreach ($participant as $key => $value) {
-                if($key === 'id' && $value != $current_user) 
-                {
+                if($key === 'id' && $value != $current_user) {
                     $participants[] = $value;
                 }
             }

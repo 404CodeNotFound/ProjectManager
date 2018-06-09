@@ -5,13 +5,10 @@ use models\Task;
 use models\Error;
 
 session_start();
-if(!isset($_SESSION['current_user_id']))
-{
+if(!isset($_SESSION['current_user_id'])) {
     $error = new Error("Only authorized users can edit a task.", 401);
     echo json_encode($error);
-}
-else
-{
+} else {
     $title = $_POST['title'];
 	$description = $_POST['description'];
 	$priority = $_POST['priority'];

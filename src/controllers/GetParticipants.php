@@ -4,13 +4,10 @@ Startup::_init(true);
 use models\ProjectParticipant;
 
 session_start();
-if(!isset($_SESSION['current_user_id']))
-{
+if(!isset($_SESSION['current_user_id'])) {
     http_response_code(401);
 	header('Location: ../views/HomePageView.php');
-}
-else
-{
+} else {
     $project_id = $_GET['project_id'];
     $pattern = htmlspecialchars($_GET['pattern']);
     

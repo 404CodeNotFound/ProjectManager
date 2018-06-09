@@ -5,13 +5,10 @@ use models\Task;
 use models\Error;
 
 session_start();
-if(!isset($_SESSION['current_user_id']))
-{
+if(!isset($_SESSION['current_user_id'])) {
     $error = new Error("Only authorized users can create new task.", 401);
     echo json_encode($error);
-}
-else
-{
+} else {
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 

@@ -7,39 +7,29 @@ use models\Project;
 use models\Error;
 
 session_start();
-if(!isset($_SESSION['current_user_id']))
-{
+if(!isset($_SESSION['current_user_id'])) {
 	http_send_status(401);
     $error = new Error("Only authenticated users can remove participants of project.");
 	echo json_encode($error);
-}
-else
-{
+} else {
 	$current_user = $_SESSION['current_user_id'];
 	$project_id = $_GET['project_id'];
 	$username = file_get_contents('php://input');
 
 	$project = Project::getProjectById($project_id);
-	if(!$project->getId())
-	{
+	if(!$project->getId()) {
 		$error = new Error("Project was not found.", 404);
 		echo json_encode($error);
-	}
-	else if($project->getOwner() !== $current_user)
-	{
+	} else if($project->getOwner() !== $current_user) {
 		$error = new Error("You cannot remove member from project because you are not the owner.", 403);
 		echo json_encode($error);
-	}
-	else 
-	{
+	} else {
 		$user = User::getUserByUsername($username);
-		if(!$user->getId())
-		{
+
+		if(!$user->getId()) {
 			$error = new Error("Selected user was not found.", 404);
 			echo json_encode($error);
-		}
-		else 
-		{
+		} else {
 			try {
 				$isSuccessful = ProjectParticipant::removeMember($project_id, $user->getId());
 				return $isSuccessful;
