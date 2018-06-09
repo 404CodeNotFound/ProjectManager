@@ -18,12 +18,12 @@
 							<header>
 								<h1>Welcome to<br />
 								Project Manager!</h1>
-								<p>A free and fully responsive site template</p>
+								<p>Manage all your agile projects</p>
 							</header>
-							<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+							<p>Join our community of users to fully take advantage of our features. With Project Manager you can successfully manage all your projects in an agile way and handle all deadlines. Create projects, add sprints and tasks. Track the status of completeness of all your tasks.</p>
 							<ul class="actions">
 								<li><a href="../controllers/GetLoginPage.php" class="button big">Login</a></li>
-								<li><a href="./controllers/GetRegisterPage.php" class="button big">Register</a></li>
+								<li><a href="../controllers/GetRegisterPage.php" class="button big">Register</a></li>
 							</ul>
 						</div>
 						<span class="image object">
@@ -47,7 +47,7 @@
 						<ul>
 							<li><a href="../controllers/GetHomePage.php">Homepage</a></li>
 							<li><a href="../controllers/GetLoginPage.php">Login</a></li>
-							<li><a href="./controllers/GetRegisterPage.php">Register</a></li>
+							<li><a href="../controllers/GetRegisterPage.php">Register</a></li>
 						</ul>
 					</nav>
 

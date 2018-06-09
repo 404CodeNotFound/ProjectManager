@@ -21,9 +21,9 @@
 							<header>
 								<h1>Welcome to<br />
 								Project Manager!</h1>
-								<p>A free and fully responsive site template</p>
+								<p>Manage all your agile projects</p>
 							</header>
-							<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+							<p>With Project Manager you can successfully manage all your projects in an agile way and handle all deadlines. Create projects, add sprints and tasks. Track the status of completeness of all your tasks.</p>
 						</div>
 						<span class="image object">
 							<img width="400px"src="https://cdn-images-1.medium.com/max/2000/1*u4EBes6Muu2fy7iM8igMug.jpeg" alt="" />
