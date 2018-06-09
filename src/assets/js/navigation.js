@@ -8,7 +8,9 @@ navToggler.onclick = function(event) {
     sidebar.classList.toggle('inactive');
 }
 
-opener.onclick = function(event) {
-    event.preventDefault();
-    this.classList.toggle('active');
+if(opener) {
+    opener.onclick = function(event) {
+        event.preventDefault();
+        this.classList.toggle('active');
+    }
 }
