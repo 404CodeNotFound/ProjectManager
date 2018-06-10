@@ -6,7 +6,7 @@ class Startup
         self::_configurePaths($isController);
         spl_autoload_register(function($className)
         {
-            $path = $_SERVER['DOCUMENT_ROOT'] . '/ProjectManager/src/' . $className . '.php';
+            $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . CONFIG['app']['home'] . DIRECTORY_SEPARATOR . $className . '.php';
             
             require_once $path;
         });
