@@ -52,7 +52,7 @@
 					</nav>
 
 					<footer id="footer">
-						<p class="copyright">&copy; Project Manager. All rights reserved.</p>
+						<p class="copyright">&copy; WWW 10th ed, Project Manager by S.Tsenova (61946) and Y.Georgieva (61920). All rights reserved.</p>
 					</footer>
 				</div>
 				<a class="toggle" href="#sidebar" id="navigation-toggler">Toggle</a>
