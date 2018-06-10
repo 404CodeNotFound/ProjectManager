@@ -16,7 +16,7 @@
             <div id="main">
                 <div class="inner">
                     <header id="header">
-                        <h2>Sprint Details</h2>
+                        <h2>Task Details</h2>
                         <ul class="icons">
                             <li><a href="../controllers/Logout.php" class="icon fa-sign-out">Logout</a></li>
                         </ul>
