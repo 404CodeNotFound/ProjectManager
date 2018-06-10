@@ -103,7 +103,7 @@ function setAssignee(participant_id) {
         if(typeof(response) === 'number') {
             location.reload();
         } else {
-            window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${response.message}&status_code=${response.status_code}`);
+            window.location.replace(`../views/Error.php?message=${response.message}&status_code=${response.status_code}`);
         }
         
     }

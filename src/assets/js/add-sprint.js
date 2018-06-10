@@ -53,9 +53,9 @@ var sendRequest = function(sprint) {
         const parsedResponse =  JSON.parse(response);
 
         if(typeof(parsedResponse) === 'number') {            
-            window.location.replace('http://localhost/ProjectManager/src/controllers/GetProject.php?project_id=' + sprintObject.project_id);               
+            window.location.replace('../controllers/GetProject.php?project_id=' + sprintObject.project_id);               
         } else {
-            window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
+            window.location.replace(`../views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
         }
     }
 
