@@ -50,9 +50,9 @@ function sendForm(project) {
         const parsedResponse =  JSON.parse(response);
 
         if(typeof(parsedResponse) === 'number') {            
-            window.location.replace('http://localhost/ProjectManager/src/controllers/GetAllProjects.php');               
+            window.location.replace('../controllers/GetAllProjects.php');               
         } else {
-            window.location.replace(`http://localhost/ProjectManager/src/views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
+            window.location.replace(`../views/Error.php?message=${parsedResponse.message}&status_code=${parsedResponse.status_code}`);
         }
     }
 
